@@ -5,33 +5,82 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/styleguide.css" />
     <link rel="stylesheet" href="./css/globals.css" />
+    <title>Noodle</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="login-page">
       <div class="frame-wrapper">
         <div class="frame">
-          <div class="login-frame">
-            <img
-              class="fithcmus-logo"
-              src="img/login_screen/fithcmus-logo.png"
-            />
-            <p class="text-wrapper">Forgot your username or password?</p>
-            <div class="login-box">
-              <div class="div">Log in</div>
-            </div>
-            <div class="password-input">
-              <div class="text-wrapper-2">Password</div>
-              <img class="line" src="img/login_screen/line-5-1.svg" />
+          <form action="/" method="post">
+            <div class="login-frame">
               <img
-                class="carbon-view-off"
-                src="img/login_screen/carbon-view-off.svg"
+                class="fithcmus-logo"
+                src="img/login_screen/fithcmus-logo.png"
               />
+              <p class="text-wrapper">Forgot your username or password?</p>
+              <button
+                style="
+                  background: none;
+                  color: inherit;
+                  border: none;
+                  padding: 0;
+                  font: inherit;
+                  cursor: pointer;
+                  outline: inherit;
+                "
+              >
+                <div class="login-box">
+                  <div class="div">Log in</div>
+                </div>
+              </button>
+              <div class="password-input">
+                <div class="text-wrapper-2">Password</div>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  style="
+                    margin-top: 30px;
+                    height: 50px;
+                    width: 420px;
+                    font-size: 30px;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                  "
+                />
+                <img class="line" src="img/login_screen/line-5-1.svg" />
+                <img
+                  class="carbon-view-off"
+                  src="img/login_screen/carbon-view-off.svg"
+                  onclick="togglePasswordVisibility()"
+                />
+              </div>
+              <div class="username-input">
+                <div class="text-wrapper-2">Username</div>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  style="
+                    margin-top: 30px;
+                    height: 50px;
+                    width: 440px;
+                    font-size: 30px;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                  "
+                />
+                <img class="line" src="img/login_screen/line-5-1.svg" />
+              </div>
             </div>
-            <div class="username-input">
-              <div class="text-wrapper-2">Username</div>
-              <img class="line" src="img/login_screen/line-5-1.svg" />
-            </div>
-          </div>
+          </form>
           <div class="logo-frame">
             <img class="image" src="img/login_screen/image-10.png" />
           </div>
@@ -53,4 +102,11 @@
       </div>
     </div>
   </body>
+  <script>
+    function togglePasswordVisibility() {
+      const newType =
+        $("#password").attr("type") === "password" ? "text" : "password";
+      $("#password").attr("type", newType);
+    }
+  </script>
 </html>
