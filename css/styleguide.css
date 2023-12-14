@@ -1,0 +1,37 @@
+:root {
+  --primary: rgba(80, 99, 191, 1);
+  --foundation-purplepurple-50: rgba(239, 230, 253, 1);
+  --foundation-purplepurple-100: rgba(206, 176, 250, 1);
+  --foundation-purplepurple-200: rgba(183, 138, 247, 1);
+  --foundation-purplepurple-300: rgba(150, 84, 244, 1);
+  --foundation-purplepurple-400: rgba(129, 51, 241, 1);
+  --foundation-purplepurple-500: rgba(98, 0, 238, 1);
+  --foundation-purplepurple-600: rgba(89, 0, 217, 1);
+  --foundation-purplepurple-700: rgba(70, 0, 169, 1);
+  --foundation-purplepurple-800: rgba(54, 0, 131, 1);
+  --foundation-purplepurple-900: rgba(41, 0, 100, 1);
+  --body-regular-font-family: "Poppins-Regular", Helvetica;
+  --body-regular-font-weight: 400;
+  --body-regular-font-size: 14px;
+  --body-regular-letter-spacing: 0px;
+  --body-regular-line-height: normal;
+  --body-regular-font-style: normal;
+  --body-semibold-font-family: "Poppins-SemiBold", Helvetica;
+  --body-semibold-font-weight: 600;
+  --body-semibold-font-size: 14px;
+  --body-semibold-letter-spacing: 0px;
+  --body-semibold-line-height: normal;
+  --body-semibold-font-style: normal;
+  --subtitle-regular-font-family: "Poppins-Regular", Helvetica;
+  --subtitle-regular-font-weight: 400;
+  --subtitle-regular-font-size: 16px;
+  --subtitle-regular-letter-spacing: 0px;
+  --subtitle-regular-line-height: normal;
+  --subtitle-regular-font-style: normal;
+  --caption-regul-font-family: "Poppins-Regular", Helvetica;
+  --caption-regul-font-weight: 400;
+  --caption-regul-font-size: 10px;
+  --caption-regul-letter-spacing: 0px;
+  --caption-regul-line-height: normal;
+  --caption-regul-font-style: normal;
+}
