@@ -8,8 +8,9 @@
 
 html,
 body {
-  margin: 0px;
+  margin: 0px auto;
   height: 100%;
+  width: 1440px;
 }
 
 /* a blue color as a generic focus style */
