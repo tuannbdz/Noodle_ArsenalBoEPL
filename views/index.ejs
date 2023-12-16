@@ -57,8 +57,9 @@
                 <img class="line" src="img/login_screen/line-5-1.svg" />
                 <img
                   class="carbon-view-off"
+                  id="password-view-icon"
                   src="img/login_screen/carbon-view-off.svg"
-                  onclick="togglePasswordVisibility()"
+                  onclick="togglePasswordVisibility();toggleCarbonView();"
                 />
               </div>
               <div class="username-input">
@@ -107,6 +108,14 @@
       const newType =
         $("#password").attr("type") === "password" ? "text" : "password";
       $("#password").attr("type", newType);
+    }
+    function toggleCarbonView() {
+      const newIcon =
+        $("#password-view-icon").attr("src") ===
+        "img/login_screen/carbon-view-off.svg"
+          ? "img/login_screen/carbon-view.svg"
+          : "img/login_screen/carbon-view-off.svg";
+      $("#password-view-icon").attr("src", newIcon);
     }
   </script>
 </html>
