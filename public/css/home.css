@@ -12,7 +12,7 @@
   align-items: center;
   gap: 202px;
   border-radius: 0px 0px 23px 23px;
-  background: whitesmoke;
+  background: white;
 }
 .navbar-nav {
   display: flex !important;
@@ -68,21 +68,21 @@
 
 /* HOME SCREEN */
 .deadline {
-  position: relative;
+  position: absolute;
   z-index: 900;
-  top: -80px;
+  top: 620px;
   left: 0;
   right: 0;
   display: flex;
   width: 1307px;
-  margin: 0 auto;
+  margin: auto;
   justify-content: space-between;
   align-items: center;
 }
 .course-card {
   width: 400px;
   cursor: pointer;
-
+  position: relative;
   padding: 13px 34px 20px 35px;
   display: flex;
   flex-direction: column;
@@ -97,15 +97,25 @@
   letter-spacing: 0;
   line-height: normal;
 }
-.deadline .course-card {
+.course-card {
   transition: transform 0.3s ease-out;
 }
 .deadline .course-card:hover {
   transform: scale(1.2);
+}
+.course-card:hover {
+  transform: scale(1.1);
 }
 
 .title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#footer {
+  position: relative;
+  height: 420px;
+  background-color: #e6e8ed;
+  padding: 40px;
 }
