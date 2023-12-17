@@ -46,7 +46,7 @@
 }
 .dropdown-menu .dropdown-item {
   position: relative;
-  width: fit-content;
+  width: 100%;
   padding: 4px 0;
   font-family: "Poppins", Helvetica;
   font-weight: 600;
@@ -54,4 +54,7 @@
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;
+}
+.dropdown-item:active {
+  background: none !important;
 }
