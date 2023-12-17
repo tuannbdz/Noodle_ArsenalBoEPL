@@ -700,12 +700,11 @@
   left: 35px;
 }
 
-.home-page .text-wrapper-12 {
+.text-wrapper-12 {
   font-weight: 600;
   font-size: 20px;
   position: relative;
   width: fit-content;
-  margin-top: -1px;
   font-family: "Poppins", Helvetica;
   color: #000000;
   letter-spacing: 0;
@@ -720,11 +719,10 @@
   flex: 0 0 auto;
 }
 
-.home-page .text-wrapper-13 {
+.text-wrapper-13 {
   position: relative;
   width: 131px;
   height: 20px;
-  margin-top: -1px;
   font-family: "Poppins", Helvetica;
   font-weight: 400;
   color: #4f4e68;
@@ -733,7 +731,7 @@
   line-height: normal;
 }
 
-.home-page .text-wrapper-14 {
+.text-wrapper-14 {
   position: relative;
   width: 77px;
   height: 15px;
@@ -751,11 +749,9 @@
   height: 16.18px;
 }
 
-.home-page .text-wrapper-15 {
-  position: absolute;
+.text-wrapper-15 {
+  position: relative;
   width: 95px;
-  top: 0;
-  left: 0;
   font-family: "Poppins", Helvetica;
   font-weight: 400;
   color: #250c5a;
