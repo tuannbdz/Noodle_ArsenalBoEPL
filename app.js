@@ -9,6 +9,7 @@ const globalErrorHandler = require(path.join(
 ));
 
 const indexRouter = require(path.join(__dirname, "routes", "index"));
+const homeRouter = require(path.join(__dirname, "routes", "homeRoutes"));
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use("/", indexRouter);
+app.use("/home", homeRouter);
 
 app.all("*", function (req, res, next) {
   next(new AppError(`Cannot find ${req.originalUrl} on this server!`, 404));

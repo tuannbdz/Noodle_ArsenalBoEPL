@@ -8,8 +8,10 @@
 
 html,
 body {
-  margin: 0px;
+  margin: 0px auto;
   height: 100%;
+  width: 1440px;
+  font-family: "Poppins", Helvetica;
 }
 
 /* a blue color as a generic focus style */

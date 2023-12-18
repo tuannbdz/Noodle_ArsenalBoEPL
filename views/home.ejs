@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/styleguide.css" />
+    <link rel="stylesheet" href="./css/globals.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    body {
+      margin-top: 40px;
+    }
+  </style>
+  <body>
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed-top">
+      <!-- LOGO HCMUS -->
+      <a href="#"
+        ><img
+          style="position: relative; width: 252px; height: 60px"
+          src="img/navbar/logo-hcmus-no-text.png"
+      /></a>
+      <!-- NAVBAR MENU -->
+      <div class="navbar-nav">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#">Courses</a>
+        <a class="nav-link" href="#">Calendar</a>
+        <a class="nav-link" href="#">Support</a>
+      </div>
+      <div
+        class="d-flex align-items-center justify-content-between"
+        style="gap: 32px"
+      >
+        <a href="#"> <img id="bell" src="img/navbar/bell-icon.svg" /></a>
+        <a href="#"><img id="message" src="img/navbar/message-icon.svg" /></a>
+        <!-- AVATAR AND DROPDOWN -->
+        <div class="dropdown">
+          <img
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="avatar-icon rounded-circle dropdown-toggle"
+            src="img/navbar/21127689.png"
+            alt="student_picture"
+            style="cursor: pointer"
+          />
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item disabled" href="#">Nguyen Hong Thai</a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item disabled"
+                style="font-size: 12px; font-weight: 400"
+                href="#"
+                >21127689</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="#"
+                ><img src="img/navbar/dashboard-icon.svg" /> Dashboard</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"
+                ><img src="img/navbar/profile-icon.svg" /> Profile</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"
+                ><img src="img/navbar/preferences-icon.svg" /> Preferences</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" style="color: red !important" href="#"
+                ><img src="img/navbar/logout-icon.svg" /> Log out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HOME SLIDER -->
+    <div
+      id="carouselExampleInterval"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="img/home_screen/background-of-school-1.png"
+            class="d-block w-100"
+            style="height: 672px"
+            alt="slide-1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="img/home_screen/background-of-school-2.png"
+            class="d-block w-100"
+            style="height: 672px"
+            alt="slide-2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="img/home_screen/background-of-school-3.png"
+            class="d-block w-100"
+            style="height: 672px"
+            alt="slide-3"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon visually-hidden"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon visually-hidden"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- LATEST DEADLINE -->
+    <div class="deadline">
+      <div
+        class="course-card"
+        onclick="window.location.href='http:\/\/localhost:3000';"
+      >
+        <!-- title -->
+        <div class="title text-wrapper-12">Introduction to Programming</div>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <div class="text-wrapper-13">Time remaining</div>
+          <div class="text-wrapper-14">Final Project</div>
+        </div>
+        <div class="text-wrapper-15">3 days 23 hours</div>
+      </div>
+      <div
+        class="course-card"
+        onclick="window.location.href='http:\/\/localhost:3000';"
+      >
+        <!-- title -->
+        <div class="title text-wrapper-12 w-100">
+          Introduction to Software Engineering
+        </div>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <div class="text-wrapper-13">Time remaining</div>
+          <div class="text-wrapper-14">Final Project</div>
+        </div>
+        <div class="text-wrapper-15">3 days 23 hours</div>
+      </div>
+      <div
+        class="course-card"
+        onclick="window.location.href='http:\/\/localhost:3000';"
+      >
+        <!-- title -->
+        <div class="title text-wrapper-12">Introduction to Data Science</div>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <div class="text-wrapper-13">Time remaining</div>
+          <div class="text-wrapper-14">Final Project</div>
+        </div>
+        <div class="text-wrapper-15">3 days 23 hours</div>
+      </div>
+    </div>
+
+    <!-- MAIN BODY -->
+    <div
+      id="main"
+      style="
+        background-color: #f5f6fa;
+        min-height: 2100px;
+        padding: 100px 40px 40px 40px;
+      "
+    >
+      <!-- CURRENT SEMESTER TITLE -->
+      <div class="text-wrapper-7 mb-5">Semester 1 - Junior</div>
+
+      <!-- COURSES -->
+      <div class="course-card mx-auto mb-5" style="width: 90%">
+        <!-- KEY-ICON -->
+        <img
+          src="img/home_screen/solar-key-linear.svg"
+          alt="key-icon"
+          style="
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 57px;
+            margin: auto;
+          "
+        />
+        <!-- COURSE TITLE -->
+        <div class="title text-wrapper-8">
+          Introduction to Machine Learning - CSC14005
+        </div>
+        <!-- COURSE CLASS -->
+        <div class="text-wrapper-9 mb-3">21KHMT01</div>
+        <!-- COURSE TEACHERS -->
+        <div class="text-wrapper-9">
+          <span>Teacher: </span>
+          <span style="color: #ff7c00">Bui Tien Len</span>
+        </div>
+        <div class="text-wrapper-9">
+          <span>Teacher: </span>
+          <span style="color: #ff7c00">Le Nhut Nam</span>
+        </div>
+        <div class="text-wrapper-9">
+          <span>Teacher: </span>
+          <span style="color: #ff7c00">Nguyen Ngoc Duc</span>
+        </div>
+      </div>
+
+      <div class="course-card mx-auto mb-5" style="width: 90%">
+        <!-- KEY-ICON -->
+        <img
+          src="img/home_screen/solar-key-linear.svg"
+          alt="key-icon"
+          style="
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 57px;
+            margin: auto;
+          "
+        />
+        <!-- COURSE TITLE -->
+        <div class="title text-wrapper-8">
+          Introduction to Machine Learning - CSC14005
+        </div>
+        <!-- COURSE CLASS -->
+        <div class="text-wrapper-9 mb-3">21KHMT01</div>
+        <!-- COURSE TEACHERS -->
+        <div class="text-wrapper-9">
+          <span>Teacher: </span>
+          <span style="color: #ff7c00">Bui Tien Len</span>
+        </div>
+        <div class="text-wrapper-9">
+          <span>Teacher: </span>
+          <span style="color: #ff7c00">Le Nhut Nam</span>
+        </div>
+        <div class="text-wrapper-9">
+          <span>Teacher: </span>
+          <span style="color: #ff7c00">Nguyen Ngoc Duc</span>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div
+        id="infomation"
+        class="d-flex justify-content-center"
+        style="gap: 132px"
+      >
+        <div style="max-width: 350px">
+          <img
+            style="position: relative; width: 200px"
+            src="img/navbar/logo-hcmus-no-text.png"
+            class="mb-4"
+          />
+          <div class="text-wrapper-9" style="position: relative; left: 5px">
+            Faculty of Information Technology, VNUHCM-University of Science
+          </div>
+        </div>
+        <div>
+          <div class="text-wrapper-2 mb-4">Info</div>
+          <div><a class="text-wrapper-3" href="#">HCMUS website</a></div>
+          <div><a class="text-wrapper-3" href="#">FIT-HCMUS website</a></div>
+          <div><a class="text-wrapper-3" href="#">CTDA website</a></div>
+        </div>
+        <div>
+          <div class="text-wrapper-2 mb-4">Contact us</div>
+          <div class="text-wrapper-9">
+            227 Nguyen Van Cu, District 5, Ho Chi Minh city, Vietnam
+          </div>
+          <div class="text-wrapper-9">
+            <img src="img/footer/solar-phone-outline.svg" alt="phone-icon" />
+            Phone : (028) 3835 4266
+          </div>
+          <div class="text-wrapper-9">
+            <img src="img/footer/quill-mail.svg" alt="mail-icon" /> E-mail :
+            info@fit.hcmus.edu.vn
+          </div>
+        </div>
+      </div>
+      <div
+        class="logo mx-auto"
+        style="position: absolute; bottom: 5px; left: 0; right: 0; margin: auto"
+      >
+        <div class="overlap-group mx-auto">
+          <img
+            class="sk-telecom"
+            src="img/home_screen/sk-telecom-t1-seeklogo-1.png"
+          />
+          <div class="text-wrapper">Noodle</div>
+          <div class="div">Powered by</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
