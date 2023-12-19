@@ -11,6 +11,6 @@ const controller = require(path.join(
 
 router.route("/").get(controller.render);
 
-router.route("/:id").get(controller.renderCourseId);
+router.route("/a").get(controller.renderCourseId);
 
 module.exports = router;
