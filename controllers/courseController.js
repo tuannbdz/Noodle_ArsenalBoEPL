@@ -1,5 +1,5 @@
 function render(req, res) {
-  res.render("course_screen");
+  res.render("courses");
 }
 
 function renderCourseId(req, res) {

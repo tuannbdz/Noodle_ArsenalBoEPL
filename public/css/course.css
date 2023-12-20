@@ -1,0 +1,56 @@
+.course-card {
+  height: 270px !important;
+  position: relative;
+  padding: 13px 34px 20px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  justify-content: space-between;
+  border-radius: 24px !important;
+  border: 2px solid #f5f6fa;
+  background: #fff;
+  fill: lightgray -1.228px -10.306px / 102.632% 153.949% no-repeat;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  letter-spacing: 0;
+  line-height: normal;
+}
+/* .course-card {
+  transition: transform 0.3s ease-out;
+}
+.course-card:hover {
+  transform: scale(1.06);
+} */
+.course-card .process-status {
+  color: #000;
+  font-family: "Poppins", Helvetica;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  bottom: 64px;
+}
+
+.course-card .process-week {
+  color: #000;
+  font-family: "Poppins", Helvetica;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  position: absolute;
+  bottom: 23px;
+}
+
+.course-card .play-button {
+  position: absolute;
+  bottom: 23px;
+  right: 23px;
+}
+
+.play-button img {
+  width: 79px;
+  height: 79px;
+}

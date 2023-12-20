@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/styleguide.css" />
+    <link rel="stylesheet" href="/css/globals.css" />
+    <link rel="stylesheet" href="/css/navbar_footer.css" />
+    <link rel="stylesheet" href="/css/course.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <%- include('partials/navbar', { activePage: 'course' }) %>
+    <!-- ACADEMIC STAGE MENU -->
+    <div
+      class="d-flex flex-column justify-content-center align-items-center"
+      style="background-color: #0c0928; height: 600px"
+    >
+      <div class="text-wrapper">Select your academic stage</div>
+      <div class="dropdown">
+        <button
+          type="button"
+          class="text-wrapper-7 btn bg-light rounded-pill mt-3 dropdown-toggle d-flex justify-content-between align-items-center"
+          style="
+            color: #0c0928 !important;
+            height: 80px;
+            width: 320px;
+            padding-right: 32px;
+          "
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span
+            class="dropdown-title"
+            style="width: 300px; text-align: center"
+          ></span>
+        </button>
+
+        <ul class="dropdown-menu w-100">
+          <li
+            class="dropdown-item"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            Freshman
+          </li>
+          <li
+            class="dropdown-item"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            Sophomore
+          </li>
+          <li
+            class="dropdown-item selected"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            Junior
+          </li>
+          <li
+            class="dropdown-item"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            Senior
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- MAIN -->
+    <div id="main" style="border-radius: 23px 23px 0px 0px; margin-top: -20px">
+      <div class="dropdown d-flex align-items-baseline gap-2 mb-3">
+        <div class="text-wrapper-7">Semester</div>
+        <button
+          type="button"
+          class="text-wrapper-7 btn bg-light rounded-pill mt-3 dropdown-toggle d-flex justify-content-between align-items-center"
+          style="color: #0c0928 !important; width: 80px"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span class="dropdown-title"></span>
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-start">
+          <li
+            class="dropdown-item"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            1
+          </li>
+          <li
+            class="dropdown-item"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            2
+          </li>
+          <li
+            class="dropdown-item selected"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            3
+          </li>
+          <li
+            class="dropdown-item"
+            style="color: #0c0928 !important; cursor: pointer"
+          >
+            4
+          </li>
+        </ul>
+      </div>
+      <!-- COURSES -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="course-card card" style="background-color: #ffe7ee">
+            <!-- title -->
+            <div class="text-wrapper-8">Introduction to Machine Learning</div>
+            <!--process status -->
+            <div class="process-status">In process</div>
+            <!-- process week -->
+            <div class="process-week">
+              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
+            </div>
+            <!-- play button -->
+            <a class="play-button" href="#" role="button"> </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="course-card card" style="background-color: #ffe7ee">
+            <!-- title -->
+            <div class="text-wrapper-8">Introduction to Machine Learning</div>
+            <!--process status -->
+            <div class="process-status">In process</div>
+            <!-- process week -->
+            <div class="process-week">
+              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
+            </div>
+            <!-- play button -->
+            <a class="play-button" href="#" role="button"> </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="course-card card" style="background-color: #ffe7ee">
+            <!-- title -->
+            <div class="text-wrapper-8">Introduction to Machine Learning</div>
+            <!--process status -->
+            <div class="process-status">In process</div>
+            <!-- process week -->
+            <div class="process-week">
+              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
+            </div>
+            <!-- play button -->
+            <a class="play-button" href="#" role="button"> </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="course-card card" style="background-color: #ffe7ee">
+            <!-- title -->
+            <div class="text-wrapper-8">Introduction to Machine Learning</div>
+            <!--process status -->
+            <div class="process-status">In process</div>
+            <!-- process week -->
+            <div class="process-week">
+              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
+            </div>
+            <!-- play button -->
+            <a class="play-button" href="#" role="button"> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOETER -->
+    <%- include('partials/footer') %>
+  </body>
+  <script>
+    $(document).ready(function () {
+      // DROPDOWN BEHAVIOR
+      $(".dropdown").each(function () {
+        var defaultItem = $(this)
+          .find(".dropdown-menu .dropdown-item.selected")
+          .text();
+        $(this).find(".dropdown-toggle .dropdown-title").text(defaultItem);
+      });
+      $(".dropdown-menu .dropdown-item").click(function () {
+        var selText = $(this).text();
+        $(this)
+          .parents(".dropdown")
+          .find(".dropdown-toggle .dropdown-title")
+          .text(selText);
+        $(this)
+          .parent()
+          .find(".dropdown-item.selected")
+          .removeClass("selected");
+        $(this).addClass("selected");
+      });
+      // COURSE-CARD COLOR BEHAVIOR
+      const themeColors = [
+        "#EC7B9C",
+        "#398A80",
+        "#F9F01F",
+        "#173AFF",
+        "#EC7BD3",
+      ];
+      let lastRandomColor = "#000";
+      $(".course-card.card").each(function () {
+        function getRandomElement(arr) {
+          let randomColor = arr[Math.floor(Math.random() * arr.length)];
+          while (randomColor === lastRandomColor) {
+            randomColor = arr[Math.floor(Math.random() * arr.length)];
+          }
+          console.log(randomColor, lastRandomColor);
+          lastRandomColor = randomColor;
+          return randomColor;
+        }
+        const themeColor = getRandomElement(themeColors);
+        console.log(themeColor);
+        function hexToRGBA(hex, alpha = 1) {
+          var r = parseInt(hex.slice(1, 3), 16),
+            g = parseInt(hex.slice(3, 5), 16),
+            b = parseInt(hex.slice(5, 7), 16);
+
+          return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+        }
+
+        $(this).css("background-color", hexToRGBA(themeColor, 0.3));
+        $(this).find(".play-button").html(`
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="72"
+          height="72"
+          viewBox="0 0 73 72"
+          fill="${themeColor}"
+        >
+          <path
+            d="M36.0458 72C55.9533 72 72.0915 55.8823 72.0915 36C72.0915 16.1177 55.9533 0 36.0458 0C16.1382 0 0 16.1177 0 36C0 55.8823 16.1382 72 36.0458 72Z"
+          />
+          <path
+            d="M47.515 33.1656C48.0131 33.4528 48.4267 33.866 48.7143 34.3635C49.0019 34.861 49.1533 35.4253 49.1533 35.9998C49.1533 36.5742 49.0019 37.1385 48.7143 37.636C48.4267 38.1335 48.0131 38.5467 47.515 38.8339L32.769 47.343C32.2708 47.6303 31.7058 47.7815 31.1305 47.7815C30.5553 47.7815 29.9903 47.6303 29.4921 47.343C28.994 47.0558 28.5803 46.6427 28.2927 46.1452C28.0051 45.6477 27.8537 45.0833 27.8536 44.5088V27.4907C27.8537 26.9162 28.0051 26.3518 28.2927 25.8543C28.5803 25.3568 28.994 24.9437 29.4921 24.6565C29.9903 24.3692 30.5553 24.218 31.1305 24.218C31.7058 24.218 32.2708 24.3692 32.769 24.6565L47.515 33.1656Z"
+            fill="white"
+          />
+        </svg>
+        `);
+      });
+    });
+  </script>
+</html>

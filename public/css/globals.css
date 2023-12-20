@@ -12,6 +12,8 @@ body {
   height: 100%;
   width: 1440px;
   font-family: "Poppins", Helvetica;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
 /* a blue color as a generic focus style */

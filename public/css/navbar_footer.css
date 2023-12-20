@@ -4,7 +4,7 @@
   top: 0;
   left: auto;
   right: auto;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   width: 1440px;
   height: 100px;
@@ -57,7 +57,7 @@
   padding: 4px 0;
   font-family: "Poppins", Helvetica;
   font-weight: 600;
-  color: #000000 !important;
+  color: #000000;
   font-size: 16px;
   letter-spacing: 0;
   line-height: normal;

@@ -1,3 +1,10 @@
+#main {
+  position: relative;
+  background-color: #f5f6fa;
+  min-height: 2100px;
+  padding: 40px;
+}
+
 .login-page {
   background-color: #ffffff;
   display: flex;
@@ -251,7 +258,7 @@
 .logo {
   position: relative;
   width: 240px;
-  height: 117px;
+  height: 100px;
 }
 
 .logo .overlap-group {
@@ -452,12 +459,12 @@
 
 .text-wrapper-7 {
   position: relative;
-  font-family: "Poppins", Helvetica;
-  font-weight: 700;
+  font-family: "Poppins", Helvetica !important;
+  font-weight: 700 !important;
   color: #000000;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: normal;
+  font-size: 32px !important;
+  letter-spacing: 0 !important;
+  line-height: normal !important;
 }
 
 .home-page .subject-of-semester {
@@ -896,10 +903,9 @@
   left: 433px;
 }
 
-.course-page .text-wrapper {
+.text-wrapper {
   position: relative;
   width: fit-content;
-  margin-top: -1px;
   font-family: "Poppins", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -925,10 +931,8 @@
   left: 186px;
 }
 
-.course-page .div {
+.text-wrapper-academic {
   position: absolute;
-  top: 14px;
-  left: 58px;
   font-family: "Poppins", Helvetica;
   font-weight: 600;
   color: #000000;
