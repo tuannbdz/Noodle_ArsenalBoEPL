@@ -15,5 +15,5 @@ const courseSchema = new Schema({
     lecturers: String
 });
 
-const Course = mongoose.model('Course', CourseSchema);
+const Course = mongoose.model('Course', courseSchema);
 module.exports = Course;
