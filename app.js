@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const Student = require('./models/studentModel');
 const Admin = require('./models/adminModel');
 const Lecturer = require('./models/lecturerModel');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const AppError = require(path.join(__dirname, "utilities", "AppError"));
 const globalErrorHandler = require(path.join(
@@ -14,6 +17,8 @@ const globalErrorHandler = require(path.join(
 
 const indexRouter = require(path.join(__dirname, "routes", "index"));
 const homeRouter = require(path.join(__dirname, "routes", "homeRoutes"));
+const authRouter = require(path.join(__dirname, "routes", "authRoutes"));
+const usersRouter = require(path.join(__dirname, "routes", "usersRoutes"));
 const courseRouter = require(path.join(__dirname, "routes", "courseRoutes"));
 const app = express();
 
@@ -21,16 +26,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-const dbURI = 'mongodb+srv://test:1234@noodle.66dwjnx.mongodb.net/LMS?retryWrites=true&w=majority';
-mongoose.connect(dbURI).then((result) => console.log('Connected to DB')).catch((err) => console.log(err));
+mongoose.connect(process.env.DB_CONNECT).then((result) => console.log('Connected to DB')).catch((err) => console.log(err));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// Routes
+
 app.use("/", indexRouter);
 app.use("/home", homeRouter);
-
 app.use("/course", courseRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', usersRouter);
 
 app.get('/add-student', (req, res) => {
   const student = new Student({
