@@ -16,7 +16,7 @@
     <div class="login-page">
       <div class="frame-wrapper">
         <div class="frame">
-          <form action="/" method="post">
+          <form onsubmit="handleLogin(event)">
             <div class="login-frame">
               <img
                 class="fithcmus-logo"
@@ -58,6 +58,7 @@
                 <img
                   class="carbon-view-off"
                   id="password-view-icon"
+                  style="cursor: pointer"
                   src="img/login_screen/carbon-view-off.svg"
                   onclick="togglePasswordVisibility();toggleCarbonView();"
                 />
@@ -103,6 +104,41 @@
       </div>
     </div>
   </body>
+  <script>
+    function getCookie(name) {
+      let value = "; " + document.cookie;
+      let parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+    $(document).ready(function () {
+      let token = getCookie("auth-token");
+      // if (token) {
+      //   window.location.href = "/home";
+      // }
+      $("form").on("submit", function (event) {
+        event.preventDefault();
+
+        const username = $("#username").val();
+        const password = $("#password").val();
+
+        console.log(username, password);
+
+        $.post(
+          "/api/auth/login",
+          { username: username, password: password },
+          function (data, response) {
+            console.log(data);
+            if (data.token) {
+              // Lưu token vào cookie
+              document.cookie = "auth-token=" + data.token + ";path=/";
+              window.location.href = "/home";
+            }
+          }
+        );
+      });
+    });
+  </script>
+
   <script>
     function togglePasswordVisibility() {
       const newType =

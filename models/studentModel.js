@@ -15,7 +15,6 @@ const adminSchema = new Schema({
   status: String,
   role: {
     type: String,
-    enum: ["lecturer", "student", "admin"],
     default: "student",
   },
   username: { type: String, required: true },

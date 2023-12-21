@@ -1,9 +1,11 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const Student = require("./models/studentModel");
-const Admin = require("./models/adminModel");
-const Lecturer = require("./models/lecturerModel");
+const cors = require("cors");
+// const Student = require("./models/studentModel");
+// const Admin = require("./models/adminModel");
+// const Lecturer = require("./models/lecturerModel");
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -22,6 +24,13 @@ const usersRouter = require(path.join(__dirname, "routes", "usersRoutes"));
 const courseRouter = require(path.join(__dirname, "routes", "courseRoutes"));
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://127.0.0.1:3000",
+  })
+);
+app.use(cookieParser());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -38,60 +47,6 @@ app.use("/home", homeRouter);
 app.use("/course", courseRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
-
-// app.get("/add-student", (req, res) => {
-//   const student = new User({
-//     id: "21127733",
-//     firstName: "Le",
-//     lastName: "Duong",
-//     username: "duong",
-//     password: "123",
-//   });
-//   student
-//     .save()
-//     .then((result) => {
-//       res.send(result);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// app.get("/add-admin", (req, res) => {
-//   const admin = new Admin({
-//     id: "1",
-//     firstName: "admin",
-//     lastName: "admin",
-//     username: "admin",
-//     password: "admin",
-//   });
-//   admin
-//     .save()
-//     .then((result) => {
-//       res.send(result);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// app.get("/add-lecturer", (req, res) => {
-//   const lecturer = new Lecturer({
-//     id: "123",
-//     firstName: "Van",
-//     lastName: "Chi Nam",
-//     username: "vcnam",
-//     password: "123",
-//   });
-//   lecturer
-//     .save()
-//     .then((result) => {
-//       res.send(result);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 
 app.all("*", function (req, res, next) {
   next(new AppError(`Cannot find ${req.originalUrl} on this server!`, 404));

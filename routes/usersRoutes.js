@@ -1,12 +1,12 @@
-const express = require('express');
-const User = require('./../models/studentModel');
+const express = require("express");
+const User = require("./../models/userModel");
 const router = express.Router();
-const verifyToken = require('./../middlewares/verifyToken');
+const verifyToken = require("./../middlewares/verifyToken");
 
-router.get('/', verifyToken, (request, response) => {
-    User.find({}).exec(function (err, users) {
-        response.send(users);
-    });
+router.get("/", verifyToken, (request, response) => {
+  User.find({}).exec(function (err, users) {
+    response.send(users);
+  });
 });
 
 module.exports = router;
