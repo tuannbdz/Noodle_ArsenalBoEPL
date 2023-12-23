@@ -22,6 +22,21 @@ button:focus-visible {
   outline: -webkit-focus-ring-color auto 5px !important;
 }
 
+.error {
+  color: red;
+  margin-top: 5px;
+  font-size: 0.9em;
+  transition: opacity 0.3s ease-out;
+}
+
+.error.hidden {
+  opacity: 0;
+}
+
+.error-highlight {
+  border-color: red;
+}
+
 a {
   text-decoration: none;
 }

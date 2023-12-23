@@ -36,7 +36,7 @@ router.post("/register", async (request, response) => {
 router.post("/login", async (request, response) => {
   const user = await User.findOne({ username: request.body.username });
   if (!user)
-    return response.status(422).send("Username or Password is not correct");
+    return response.status(200).send("fail");
 
   const checkPassword = await bcrypt.compare(
     request.body.password,
@@ -44,7 +44,7 @@ router.post("/login", async (request, response) => {
   );
 
   if (!checkPassword)
-    return response.status(422).send("Username or Password is not correct");
+    return response.status(200).send("fail");
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
     expiresIn: 60 * 60 * 24,
   });
