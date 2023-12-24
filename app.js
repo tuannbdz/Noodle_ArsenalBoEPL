@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const multer = require('multer');
+const multer = require("multer");
 
 // const Student = require("./models/studentModel");
 // const Admin = require("./models/adminModel");
@@ -25,6 +25,7 @@ const authRouter = require(path.join(__dirname, "routes", "authRoutes"));
 const usersRouter = require(path.join(__dirname, "routes", "usersRoutes"));
 const courseRouter = require(path.join(__dirname, "routes", "courseRoutes"));
 const uploadRouter = require(path.join(__dirname, "routes", "uploadRoutes"));
+const profileRouter = require(path.join(__dirname, "routes", "profileRoutes"));
 const app = express();
 
 app.use(
@@ -48,15 +49,15 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/", indexRouter);
 app.use("/home", homeRouter);
 app.use("/course", courseRouter);
+app.use("/profile", profileRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/upload", uploadRouter);
-app.route("/test").get(require('./controllers/uploadController').render);
+app.route("/test").get(require("./controllers/uploadController").render);
 app.all("*", function (req, res, next) {
   next(new AppError(`Cannot find ${req.originalUrl} on this server!`, 404));
 });
 
 app.use(globalErrorHandler);
-
 
 module.exports = app;
