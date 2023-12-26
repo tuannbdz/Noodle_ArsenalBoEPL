@@ -1,7 +1,7 @@
 #main {
   position: relative;
   background-color: #f5f6fa;
-  min-height: 2100px;
+  /* min-height: calc(100% - 40px - 1400px); */
   padding: 40px;
   padding-top: 100px;
 }

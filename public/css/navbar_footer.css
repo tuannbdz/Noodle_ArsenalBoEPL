@@ -63,7 +63,8 @@
   line-height: normal;
 }
 .dropdown-item:active {
-  background: none !important;
+  color: black !important;
+  background: rgb(216, 216, 216) !important;
 }
 /* FOOTER */
 #footer {

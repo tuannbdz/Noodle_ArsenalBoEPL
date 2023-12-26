@@ -9,6 +9,7 @@ const controller = require(path.join(
   "profileController"
 ));
 
-router.route("/").get(verifyToken, controller.render);
+router.route("/").get(verifyToken, controller.renderAccountSec);
+router.route("/password").get(verifyToken, controller.renderPasswordSec);
 
 module.exports = router;

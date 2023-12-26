@@ -57,3 +57,13 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+#account-area,
+#password-area {
+  display: none;
+}
+
+/*  */
+.show {
+  display: block !important;
+}
