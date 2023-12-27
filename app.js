@@ -8,10 +8,11 @@ const multer = require("multer");
 // const Admin = require("./models/adminModel");
 // const Lecturer = require("./models/lecturerModel");
 const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
+require("dotenv").config();
 
-dotenv.config();
+const JWTAction = require(path.join(__dirname, "utilities", "JWTAction"));
 
+const passport = require(path.join(__dirname, "utilities", "passport"));
 const AppError = require(path.join(__dirname, "utilities", "AppError"));
 const globalErrorHandler = require(path.join(
   __dirname,
@@ -33,18 +34,41 @@ app.use(
     origin: "http://127.0.0.1:3000",
   })
 );
-app.use(cookieParser());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  require("express-session")({
+    secret: process.env.SECRET_KEY,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
-// mongoose.connect(process.env.DB_CONNECT).then((result) => console.log('Connected to DB')).catch((err) => console.log(err));
+app.use(cookieParser());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Routes
+
+app.use((req, res, next) => {
+  if (req.cookies["auth-token"]) {
+    const token = req.cookies["auth-token"];
+    const user = JWTAction.decodeJWT(token);
+
+    req.login(user, (err) => {
+      if (err) return next(err);
+      else return next();
+    });
+  } else {
+    return next();
+  }
+});
 
 app.use("/", indexRouter);
 app.use("/home", homeRouter);

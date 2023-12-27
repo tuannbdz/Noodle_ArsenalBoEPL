@@ -11,13 +11,14 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
+    <title>Noodle</title>
   </head>
 
   <body>
     <div class="login-page">
       <div class="frame-wrapper">
         <div class="frame">
-          <form class="login-frame" onsubmit="handleLogin(event)">
+          <form class="login-frame">
             <img
               class="fithcmus-logo"
               src="/img/login_screen/fithcmus-logo.png"
@@ -129,19 +130,10 @@
     });
   </script>
   <script>
-    function getCookie(name) {
-      let value = "; " + document.cookie;
-      let parts = value.split("; " + name + "=");
-      if (parts.length === 2) return parts.pop().split(";").shift();
-    }
     $(document).ready(function () {
-      let token = getCookie("auth-token");
-      if (token) {
-        window.location.href = "/home";
-      }
       $("form").on("submit", function (event) {
         event.preventDefault();
-
+        console.log(2);
         const username = $("#username").val();
         const password = $("#password").val();
 

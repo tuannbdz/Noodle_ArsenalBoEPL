@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-
+const Auth = require("./../middlewares/auth.js");
 const controller = require(path.join(
   __dirname,
   "..",
@@ -9,8 +9,8 @@ const controller = require(path.join(
   "courseController"
 ));
 
-router.route("/").get(controller.render);
+router.route("/").get(Auth.isUser, controller.render);
 
-router.route("/:id").get(controller.renderCourseId);
+router.route("/:id").get(Auth.isUser, controller.renderCourseId);
 
 module.exports = router;

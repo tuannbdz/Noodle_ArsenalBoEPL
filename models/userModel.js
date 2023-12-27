@@ -18,7 +18,7 @@ const adminSchema = new Schema({
     enum: ["lecturer", "student", "admin"],
     default: "student",
   },
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
 
