@@ -4,7 +4,10 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require("../models/userModel");
-const { registerValidator } = require("../utilities/Validator");
+const {
+  registerValidator,
+  passwordValidator,
+} = require("../utilities/Validator");
 const JWTAction = require(path.join(__dirname, "..", "utilities", "JWTAction"));
 const passport = require(path.join(__dirname, "..", "utilities", "passport"));
 
@@ -34,6 +37,33 @@ router.post("/register", async (request, response) => {
   } catch (err) {
     response.status(400).send(err);
   }
+});
+
+router.post("/updatePassword", async function (req, res) {
+  // console.log(req.user);
+  // console.log(req.body);
+  const { error } = passwordValidator({ password: req.body.newPass });
+  if (error)
+    return res.status(200).send({
+      status: "fail",
+      message:
+        "password's length must be in range [6,20] without any special characters.",
+    });
+  const user = await User.findOne({ username: req.user.username });
+  const checkPassword = await bcrypt.compare(req.body.curPass, user.password);
+  if (!checkPassword)
+    return res
+      .status(200)
+      .send({ status: "fail", message: "Current password is wrong" });
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(req.body.newPass, salt);
+  const updateUser = await User.updateOne(
+    { _id: user._id },
+    { $set: { password: hashPassword } }
+  );
+  return res
+    .status(200)
+    .send({ status: "success", message: "change pass successfully!" });
 });
 
 // router.post("/login", async (request, response) => {

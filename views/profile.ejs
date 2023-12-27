@@ -175,31 +175,81 @@
             </div>
             <div class="error"></div>
           </div>
+
           <button
             type="submit"
+            id="update-button"
             class="mt-5 btn btn-primary fs-5 mx-auto d-block"
             style="background-color: #0098f9"
           >
-            Update
-          </button>
+            Update</button
+          ><!-- Button trigger modal -->
         </form>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="popupModal"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div
+                class="modal-body d-flex flex-column gap-3 justify-content-center align-items-center"
+                style="height: 250px"
+              >
+                <i id="popup-sign" style="font-size: 150px"></i>
+                <div id="popup-message" class="fs-5 fw-bold text-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <%-include('partials/footer') %>
-
     <script>
+      function popUpMessage(status, message, time = 1000) {
+        // Show the modal on page load
+        const fail_sign = "fa-solid fa-triangle-exclamation text-danger";
+        const success_sign = "fa-solid fa-circle-check text-success";
+        if (status == "fail") {
+          $("#popupModal")
+            .find("#popup-sign")
+            .removeClass(success_sign)
+            .addClass(fail_sign);
+        } else {
+          $("#popupModal")
+            .find("#popup-sign")
+            .removeClass(fail_sign)
+            .addClass(success_sign);
+        }
+        $("#popupModal").find("#popup-message").text(message);
+        $("#popupModal").modal("show");
+
+        // // Set timeout to hide the modal after 1 second (1000 milliseconds)
+        // setTimeout(function () {
+        //   $("#popupModal").modal("hide");
+        // }, time);
+      }
+    </script>
+    <script>
+      var flag = 0;
       const curPass = document.getElementById("current-password");
       const newPass = document.getElementById("new-password");
       const confirmPas = document.getElementById("confirm-password");
+      const updateButton = document.getElementById("update-button");
       function validateField(field) {
         if (field.value === "") {
           field.classList.add("error-highlight");
           field.parentNode.nextElementSibling.textContent =
             "This field is required";
+          flag = 0;
         } else {
           field.classList.remove("error-highlight");
           field.parentNode.nextElementSibling.textContent = "";
+          flag = 1;
         }
       }
       function checkConfirm(newP, confirmP) {
@@ -210,9 +260,11 @@
           confirmP.classList.add("error-highlight");
           confirmP.parentNode.nextElementSibling.textContent =
             "Confirm password is incorrect";
+          flag = 0;
         } else {
           confirmP.classList.remove("error-highlight");
           confirmP.parentNode.nextElementSibling.textContent = "";
+          flag = 1;
         }
       }
 
@@ -224,6 +276,7 @@
         validateField(newPass);
       });
       confirmPas.addEventListener("blur", () => {
+        checkConfirm(newPass, confirmPas);
         validateField(confirmPas);
       });
       confirmPas.addEventListener("input", () => {
@@ -231,6 +284,22 @@
       });
       $("form").on("submit", function (event) {
         event.preventDefault();
+        console.log(flag);
+        if (!flag) return;
+        try {
+          $.post(
+            "/api/auth/updatePassword",
+            {
+              curPass: curPass.value,
+              newPass: newPass.value,
+            },
+            function (data, response) {
+              popUpMessage(data.status, data.message);
+            }
+          );
+        } catch (error) {
+          console.log(error);
+        }
       });
     </script>
   </body>
