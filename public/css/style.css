@@ -377,6 +377,7 @@
   position: relative;
   flex: 0 0 auto;
 }
+
 .text-wrapper-3 {
   position: relative;
   width: fit-content;
@@ -1464,4 +1465,378 @@
   position: relative;
   flex: 0 0 auto;
   margin-bottom: -8px;
+}
+
+.theory {
+  position: absolute;
+  top: 358px;
+  left: 16px;
+  width: 1408px;
+  height: 1007px;
+  border-radius: 34px;
+  border: 8px solid #FFE9CA;
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.theory .frame {
+  position: absolute;
+  width: 1207px;
+  height: 115px;
+  top: 47px;
+  left: 100px;
+}
+
+.theory .icon-park-outline {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 36px;
+  left: 1159px;
+}
+
+.theory .theory-box {
+  position: absolute;
+  width: 239px;
+  height: 115px;
+  top: 0;
+  left: 0;
+}
+
+.theory .theory-sub-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+  top: 79px;
+  left: 0;
+}
+
+.theory .div {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.theory .solar-book-outline {
+  position: relative;
+  width: 17px;
+  height: 17px;
+}
+
+.theory .text-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Light", Helvetica;
+  font-weight: 300;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.theory .vector {
+  position: relative;
+  width: 3px;
+  height: 3px;
+}
+
+.theory .theory-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 0;
+  left: 2px;
+}
+
+.theory .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.theory .frame-wrapper {
+  position: absolute;
+  width: 1408px;
+  height: 806px;
+  top: 192px;
+  left: 0;
+}
+
+.theory .frame-2 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+  position: relative;
+  top: 47px;
+  left: 85px;
+}
+
+.theory .codicon-file-pdf {
+  position: relative;
+  width: 34px;
+  height: 34px;
+}
+
+.theory .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.theory .mingcute-ppt-line {
+  position: relative;
+  width: 33px;
+  height: 33px;
+}
+
+.textbook {
+  position: absolute;
+  top: 1412px;
+  left: 16px;
+  width: 1408px;
+  height: 213px;
+  border-radius: 34px;
+  border: 8px solid #FFE9CA;
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.textbook .frame {
+  position: relative;
+  width: 1207px;
+  height: 150px;
+  top: 32px;
+  left: 100px;
+}
+
+.textbook .icon-park-outline {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 53px;
+  left: 1159px;
+}
+
+.textbook .theory-box {
+  position: absolute;
+  width: 239px;
+  height: 115px;
+  top: 0;
+  left: 0;
+}
+
+.textbook .theory-sub-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+  top: 79px;
+  left: 0;
+}
+
+.textbook .lesson-frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.textbook .solar-book-outline {
+  position: relative;
+  width: 17px;
+  height: 17px;
+}
+
+.textbook .text-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Light", Helvetica;
+  font-weight: 300;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.textbook .vector {
+  position: relative;
+  width: 3px;
+  height: 3px;
+}
+
+.textbook .theory-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 0;
+  left: 2px;
+}
+
+.textbook .div {
+  position: relative;
+  width: 1207px;
+  margin-top: -1px;
+  font-family: "Poppins-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.textbook .ant-design-setting {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  top: 45px;
+  left: 1072px;
+}
+
+.project {
+  position: absolute;
+  width: 1408px;
+  height: 213px;
+  top: 1672px;
+  left: 16px;
+  border-radius: 34px;
+  border: 8px solid #FFE9CA;
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.project .icon-park-outline {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 83px;
+  left: 1259px;
+}
+
+.project .theory-box {
+  position: absolute;
+  width: 239px;
+  height: 153px;
+  top: 30px;
+  left: 100px;
+}
+
+.project .theory-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 0;
+  left: 2px;
+}
+
+.project .text-wrapper {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: #000000;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.project .frame {
+  position: absolute;
+  width: 236px;
+  height: 79px;
+  top: 79px;
+  left: 0;
+}
+
+.project .theory-sub-title {
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+}
+
+.project .lesson-frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.project .solar-book-outline {
+  position: relative;
+  width: 17px;
+  height: 17px;
+}
+
+.project .div {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Poppins-Light", Helvetica;
+  font-weight: 300;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.project .vector {
+  position: relative;
+  width: 3px;
+  height: 3px;
+}
+
+.project .theory-sub-title-2 {
+  top: 43px;
+  left: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+}
+
+.project .bi-trophy {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.project .ant-design-setting {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  top: 75px;
+  left: 1171px;
 }
