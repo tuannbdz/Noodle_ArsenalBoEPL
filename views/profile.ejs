@@ -1,6 +1,6 @@
 <%- include('partials/header') %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,21 +20,33 @@
         <span
           id="password-trigger"
           class="nav-acc <%= activeSection === 'password' ? 'active' : '' %>"
-          ><a class="btn fs-3" href="/profile/password">Password</a></span
+          ><a class="btn fs-3" href="/profile/?activeSection=password"
+            >Password</a
+          ></span
         >
       </div>
       <div
         id="account-area"
-        class="<%= activeSection === 'account' ? 'show' : '' %>"
+        class="section <%= activeSection === 'account' ? 'show' : '' %>"
       >
         <div class="text-center mt-3 fs-2 fw-bold">Account</div>
-        <img
-          aria-expanded="false"
-          class="avatar-icon rounded-circle mt-3 d-block mx-auto"
-          src="/img/navbar/21127689.png"
-          alt="student_picture"
-          style="cursor: pointer; height: 132px; width: 132px"
-        />
+        <!-- AVATAR -->
+        <div class="avatar mt-3 d-block mx-auto">
+          <form class="upload-avatar" enctype="multipart/form-data">
+            <img
+              aria-expanded="false"
+              class="avatar-icon rounded-circle"
+              src="/img/navbar/21127689.png"
+              alt="student_picture"
+              style="height: 132px; width: 132px"
+            />
+            <input type="file" name="file" class="file" />
+            <div class="file-icon">
+              <i class="fa-solid fa-image"></i>
+            </div>
+          </form>
+        </div>
+        <!-- CONTENT -->
         <div class="mt-5">
           <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col" style="height: 350px">
@@ -133,7 +145,7 @@
       <div
         id="password-area"
         style="padding: 0 200px"
-        class="<%= activeSection === 'password' ? 'show' : '' %>"
+        class="section <%= activeSection === 'password' ? 'show' : '' %>"
       >
         <form>
           <div class="mt-5 mb-3">
@@ -235,23 +247,21 @@
       }
     </script>
     <script>
-      var flag = 0;
       const curPass = document.getElementById("current-password");
       const newPass = document.getElementById("new-password");
       const confirmPas = document.getElementById("confirm-password");
-      const updateButton = document.getElementById("update-button");
+
       function validateField(field) {
         if (field.value === "") {
           field.classList.add("error-highlight");
           field.parentNode.nextElementSibling.textContent =
             "This field is required";
-          flag = 0;
         } else {
           field.classList.remove("error-highlight");
           field.parentNode.nextElementSibling.textContent = "";
-          flag = 1;
         }
       }
+      var flagConfirm = 0;
       function checkConfirm(newP, confirmP) {
         if (
           confirmP.value.length > newP.value.length ||
@@ -260,12 +270,25 @@
           confirmP.classList.add("error-highlight");
           confirmP.parentNode.nextElementSibling.textContent =
             "Confirm password is incorrect";
-          flag = 0;
+          flagConfirm = 0;
         } else {
           confirmP.classList.remove("error-highlight");
           confirmP.parentNode.nextElementSibling.textContent = "";
-          flag = 1;
+          flagConfirm = 1;
         }
+      }
+      const form = document.querySelector("form");
+      const inputs = form.querySelectorAll("input");
+      function checkFullFieldInput() {
+        let flag = 1;
+        inputs.forEach(function (input) {
+          if (!flag) return;
+          if (input.value === "") {
+            flag = 0;
+            return;
+          }
+        });
+        return flag;
       }
 
       curPass.addEventListener("blur", () => {
@@ -276,30 +299,65 @@
         validateField(newPass);
       });
       confirmPas.addEventListener("blur", () => {
-        checkConfirm(newPass, confirmPas);
         validateField(confirmPas);
+        checkConfirm(newPass, confirmPas);
       });
       confirmPas.addEventListener("input", () => {
         checkConfirm(newPass, confirmPas);
       });
-      $("form").on("submit", function (event) {
+      $("#password-area form").on("submit", function (event) {
         event.preventDefault();
-        console.log(flag);
-        if (!flag) return;
-        try {
-          $.post(
-            "/api/auth/updatePassword",
-            {
-              curPass: curPass.value,
-              newPass: newPass.value,
-            },
-            function (data, response) {
-              popUpMessage(data.status, data.message);
-            }
-          );
-        } catch (error) {
-          console.log(error);
+        var flag = checkFullFieldInput();
+        if (!flag)
+          return popUpMessage("fail", "Please fill in all the fields.");
+        else if (!flagConfirm)
+          return popUpMessage("fail", "Confirm password is incorrect");
+
+        $.post("/api/auth/updatePassword", {
+          curPass: curPass.value,
+          newPass: newPass.value,
+        })
+          .done(function (data) {
+            popUpMessage(data.status, data.message);
+          })
+          .fail(function (xhr, textStatus, errorThrown) {
+            popUpMessage("fail", xhr.responseText);
+            console.log(
+              "Error: " + xhr.status + " " + textStatus + " " + errorThrown
+            );
+          });
+      });
+    </script>
+    <script>
+      $(".avatar .upload-avatar .file").on("change", function (event) {
+        event.preventDefault();
+        const file = this.files[0];
+        if (this.files && this.files.length > 0) {
+          $(".upload-avatar").submit();
+        } else {
+          $(this).val("");
         }
+      });
+      $(".avatar .upload-avatar").on("submit", function (event) {
+        event.preventDefault();
+        var formData = new FormData($(this)[0]);
+        formData.append("category", "avatar");
+        // console.log(formData);
+        $.ajax({
+          url: "http://localhost:3000/api/upload", // URL mà bạn muốn gửi file đến
+          type: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            console.log("File uploaded successfully");
+            // Xử lý thêm gì đó khi upload thành công
+          },
+          error: function (response) {
+            console.error("Error occurred during file upload");
+            // Xử lý khi có lỗi xảy ra
+          },
+        });
       });
     </script>
   </body>

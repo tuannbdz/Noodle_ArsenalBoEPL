@@ -4,36 +4,49 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require("../models/userModel");
-const {
-  registerValidator,
-  passwordValidator,
-} = require("../utilities/Validator");
+const { registerValidator, passwordValidator } = require(path.join(
+  __dirname,
+  "..",
+  "utilities",
+  "Validator"
+));
 const JWTAction = require(path.join(__dirname, "..", "utilities", "JWTAction"));
 const passport = require(path.join(__dirname, "..", "utilities", "passport"));
-
-router.post("/register", async (request, response) => {
-  const { error } = registerValidator(request.body);
+const { authenticateForm } = require(path.join(
+  __dirname,
+  "..",
+  "middlewares",
+  "registerHandle"
+));
+router.post("/register", authenticateForm, async (request, response) => {
+  const { error } = registerValidator({
+    id: request.body.id,
+    username: request.body.username,
+    password: request.body.password,
+  });
 
   if (error) return response.status(422).send(error.details[0].message);
 
-  const checkExist = await User.findOne({ username: request.body.username });
+  const checkExist = await User.findOne({ id: request.body.id });
 
-  if (checkExist) return response.status(422).send("Account is exist");
+  if (checkExist)
+    return response.status(422).send("Account is exist, Invalid ID");
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(request.body.password, salt);
 
-  const user = new User({
-    id: request.body.id,
-    firstName: request.body.firstName,
-    lastName: request.body.lastName,
-    username: request.body.username,
-    password: hashPassword,
-  });
+  const userAttribue = { ...request.body };
+  userAttribue.password = hashPassword;
+
+  const user = new User(userAttribue);
 
   try {
     const newUser = await user.save();
-    response.send(newUser);
+    response.send({
+      status: "success",
+      message: "Successfully!",
+      data: newUser,
+    });
   } catch (err) {
     response.status(400).send(err);
   }

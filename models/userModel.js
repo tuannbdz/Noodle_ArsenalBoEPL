@@ -9,6 +9,7 @@ const adminSchema = new Schema({
   },
   firstName: String,
   lastName: String,
+  fullName: String,
   dob: Date,
   address: String,
   gender: { type: String, enum: ["Male", "Female"] },
@@ -18,6 +19,8 @@ const adminSchema = new Schema({
     enum: ["lecturer", "student", "admin"],
     default: "student",
   },
+  gmail: String,
+  year: String,
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });

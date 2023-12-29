@@ -6,6 +6,14 @@
   padding-top: 100px;
 }
 
+.f-nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+.f-pt-san-caption {
+  font-family: "PT Sans Caption", sans-serif;
+}
+
 .login-page {
   background-color: #ffffff;
   display: flex;

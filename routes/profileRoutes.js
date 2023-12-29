@@ -10,7 +10,7 @@ const controller = require(path.join(
   "profileController"
 ));
 
-router.route("/").get(Auth.isUser, controller.renderAccountSec);
-router.route("/password").get(Auth.isUser, controller.renderPasswordSec);
+router.route("/").get(Auth.isUser, controller.renderProfile);
+// router.route("/password").get(Auth.isUser, controller.renderPasswordSec);
 
 module.exports = router;
