@@ -50,7 +50,7 @@ app.use(cookieParser());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use("/materials", express.static(path.join(__dirname, "materials")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -60,7 +60,6 @@ app.use((req, res, next) => {
   if (req.cookies["auth-token"]) {
     const token = req.cookies["auth-token"];
     const user = JWTAction.decodeJWT(token);
-
     req.login(user, (err) => {
       if (err) return next(err);
       else return next();

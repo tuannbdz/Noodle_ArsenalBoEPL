@@ -9,6 +9,7 @@
   </head>
   <body>
     <%-include('partials/navbar', { activePage: 'none' }) %>
+
     <div class="mt-5"></div>
     <div id="main" style="height: fit-content !important">
       <div class="d-flex justify-content-center bot-line">
@@ -36,11 +37,16 @@
             <img
               aria-expanded="false"
               class="avatar-icon rounded-circle"
-              src="/img/navbar/21127689.png"
+              src="/materials/avatar/<%=avatar%>"
               alt="student_picture"
               style="height: 132px; width: 132px"
             />
-            <input type="file" name="file" class="file" />
+            <input
+              type="file"
+              name="file"
+              class="file"
+              accept="image/jpeg,image/png,image/jpg"
+            />
             <div class="file-icon">
               <i class="fa-solid fa-image"></i>
             </div>
@@ -219,7 +225,8 @@
         </div>
       </div>
     </div>
-
+    <!-- user.username -->
+    <div id="user-username" class="d-none"><%= username %></div>
     <%-include('partials/footer') %>
     <script>
       function popUpMessage(status, message, time = 1000) {
@@ -338,20 +345,32 @@
           $(this).val("");
         }
       });
+      function updateImageSrc(imageElement, newImagePath) {
+        var timestamp = new Date().getTime(); // Tạo một timestamp
+        var newSrc = newImagePath + "?t=" + timestamp; // Thêm timestamp vào URL
+        $(imageElement).attr("src", newSrc);
+      }
+
       $(".avatar .upload-avatar").on("submit", function (event) {
         event.preventDefault();
         var formData = new FormData($(this)[0]);
-        formData.append("category", "avatar");
-        // console.log(formData);
+        const category = "avatar";
+        const username = $("#user-username").text();
+
         $.ajax({
-          url: "http://localhost:3000/api/upload", // URL mà bạn muốn gửi file đến
+          url: `http://localhost:3000/api/upload/?category=${category}&username=${username}`, // URL mà bạn muốn gửi file đến
           type: "POST",
           data: formData,
           contentType: false,
           processData: false,
           success: function (response) {
             console.log("File uploaded successfully");
-            // Xử lý thêm gì đó khi upload thành công
+            console.log(response);
+
+            updateImageSrc(
+              ".avatar-icon",
+              `/materials/avatar/${response.filename}`
+            );
           },
           error: function (response) {
             console.error("Error occurred during file upload");

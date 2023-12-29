@@ -36,7 +36,7 @@
         id="manually-area"
         class="section <%= activeSection === 'manually' ? 'show' : 'd-none' %>"
       >
-        <form>
+        <form class="inpForm">
           <div class="mt-5 mb-3">
             <label for="role-select" class="form-label fs-4 fw-bold"
               >Role</label
@@ -229,7 +229,30 @@
         style="padding: 0 200px"
         class="section <%= activeSection === 'password' ? 'show' : 'd-none' %>"
       >
-        <form>
+        <div class="text-center mt-3 fs-2 fw-bold">Account</div>
+        <!-- AVATAR -->
+        <div class="avatar mt-3 d-block mx-auto">
+          <form class="upload-avatar" enctype="multipart/form-data">
+            <img
+              aria-expanded="false"
+              class="avatar-icon rounded-circle"
+              src="/materials/avatar/<%=avatar%>"
+              alt="student_picture"
+              style="height: 132px; width: 132px"
+            />
+            <input
+              type="file"
+              name="file"
+              class="file"
+              accept="image/jpeg,image/png,image/jpg"
+            />
+            <div class="file-icon">
+              <i class="fa-solid fa-image"></i>
+            </div>
+          </form>
+        </div>
+
+        <form class="inpForm">
           <div class="mt-5 mb-3">
             <label for="current-password" class="form-label fs-4 fw-bold"
               >Current password</label
@@ -301,6 +324,7 @@
         </div>
       </div>
     </div>
+    <div id="user-username" class="d-none"><%= username %></div>
     <%-include('partials/footer') %>
     <script>
       function popUpMessage(status, message, time = 1000) {
@@ -374,7 +398,7 @@
         }
       }
 
-      const form = document.querySelector(".section.show form");
+      const form = document.querySelector(".section.show .inpForm");
       const inputs = form.querySelectorAll("input");
       function checkFullFieldInput() {
         let flag = 1;
@@ -419,7 +443,7 @@
         });
       }
       // --------------------------------
-      $(".section.show form").on("submit", function (event) {
+      $(".section.show .inpForm").on("submit", function (event) {
         event.preventDefault();
         const formData = $(this).serialize();
 
@@ -455,6 +479,50 @@
               );
             });
         }
+      });
+    </script>
+    <script>
+      $(".avatar .upload-avatar .file").on("change", function (event) {
+        event.preventDefault();
+        const file = this.files[0];
+        if (this.files && this.files.length > 0) {
+          $(".upload-avatar").submit();
+        } else {
+          $(this).val("");
+        }
+      });
+      function updateImageSrc(imageElement, newImagePath) {
+        var timestamp = new Date().getTime(); // Tạo một timestamp
+        var newSrc = newImagePath + "?t=" + timestamp; // Thêm timestamp vào URL
+        $(imageElement).attr("src", newSrc);
+      }
+
+      $(".avatar .upload-avatar").on("submit", function (event) {
+        event.preventDefault();
+        var formData = new FormData($(this)[0]);
+        const category = "avatar";
+        const username = $("#user-username").text();
+        console.log(username);
+        $.ajax({
+          url: `http://localhost:3000/api/upload/?category=${category}&username=${username}`, // URL mà bạn muốn gửi file đến
+          type: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function (response) {
+            console.log("File uploaded successfully");
+            console.log(response);
+
+            updateImageSrc(
+              ".avatar-icon",
+              `/materials/avatar/${response.filename}`
+            );
+          },
+          error: function (response) {
+            console.error("Error occurred during file upload");
+            // Xử lý khi có lỗi xảy ra
+          },
+        });
       });
     </script>
   </body>

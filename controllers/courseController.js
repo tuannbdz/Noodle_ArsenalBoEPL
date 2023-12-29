@@ -1,10 +1,10 @@
 function render(req, res) {
-  res.render("courses");
+  res.render("courses", { avatar: req.user.avatar });
 }
 
-function renderCourseId(req, res) {
-  res.render("courseById");
+function renderCourseDetail(req, res) {
+  res.render("_detail", { avatar: req.user.avatar });
 }
 exports.render = render;
 
-exports.renderCourseId = renderCourseId;
+exports.renderCourseDetail = renderCourseDetail;
