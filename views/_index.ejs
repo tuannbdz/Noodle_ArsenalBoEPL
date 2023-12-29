@@ -1,164 +1,175 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/styleguide.css" />
+    <link rel="stylesheet" href="/css/globals.css" />
+    <title>Noodle</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <title>Noodle</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/css/styleguide.css" />
-  <link rel="stylesheet" href="/css/globals.css" />
-  <title>Noodle</title>
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <div class="login-page">
-    <div class="frame-wrapper">
-      <div class="frame">
-        <form onsubmit="handleLogin(event)">
-          <div class="login-frame">
-            <img class="fithcmus-logo" src="/img/login_screen/fithcmus-logo.png" />
+  <body>
+    <div class="login-page">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <form class="login-frame">
+            <img
+              class="fithcmus-logo"
+              src="/img/login_screen/fithcmus-logo.png"
+            />
             <p class="text-wrapper">Forgot your username or password?</p>
-            <button style="
-                  background: none;
-                  color: inherit;
-                  border: none;
-                  padding: 0;
-                  font: inherit;
-                  cursor: pointer;
-                  outline: inherit;
-                ">
+            <button
+              style="
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font: inherit;
+                cursor: pointer;
+                outline: inherit;
+              "
+            >
               <div class="login-box">
                 <div class="div">Log in</div>
               </div>
             </button>
             <div class="password-input">
               <div class="text-wrapper-2">Password</div>
-              <input type="password" name="password" id="password" style="
-                    margin-top: 40px;
-                    height: 50px;
-                    width: 420px;
-                    font-size: 25px;
-                    font-family: 'Poppins', Helvetica;
-                    background-color: transparent;
-                    border: none;
-                    outline: none;
-                    " />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                style="
+                  margin-top: 40px;
+                  height: 50px;
+                  width: 420px;
+                  font-size: 25px;
+                  font-family: 'Poppins', Helvetica;
+                  background-color: transparent;
+                  border: none;
+                  outline: none;
+                "
+              />
               <span class="error"></span>
               <img class="line" src="/img/login_screen/line-5-1.svg" />
-              <img class="carbon-view-off" id="password-view-icon" style="cursor: pointer"
-                src="img/login_screen/carbon-view-off.svg" onclick="togglePasswordVisibility();toggleCarbonView();" />
+              <img
+                class="carbon-view-off"
+                id="password-view-icon"
+                style="cursor: pointer"
+                src="img/login_screen/carbon-view-off.svg"
+                onclick="togglePasswordVisibility();toggleCarbonView();"
+              />
             </div>
             <div class="username-input">
               <div class="text-wrapper-2">Username</div>
-              <input type="text" name="username" id="username" style="
-                    margin-top: 40px;
-                    height: 50px;
-                    width: 420px;
-                    font-size: 25px;
-                    font-family: 'Poppins', Helvetica;
-                    background-color: transparent;
-                    border: none;
-                    outline: none;
-                  " />
+              <input
+                type="text"
+                name="username"
+                id="username"
+                style="
+                  margin-top: 40px;
+                  height: 50px;
+                  width: 420px;
+                  font-size: 25px;
+                  font-family: 'Poppins', Helvetica;
+                  background-color: transparent;
+                  border: none;
+                  outline: none;
+                "
+              />
               <span class="error"></span>
               <img class="line" src="img/login_screen/line-5-1.svg" />
             </div>
+          </form>
+
+          <div class="logo-frame">
+            <img class="image" src="img/login_screen/image-10.png" />
           </div>
-        </form>
-        <div class="logo-frame">
-          <img class="image" src="img/login_screen/image-10.png" />
-        </div>
-        <div class="source-noodle">
-          <div class="notes">
-            <div class="logo">
-              <div class="overlap-group">
-                <img class="sk-telecom" src="img/login_screen/sk-telecom-t1-seeklogo-1.png" />
-                <div class="text-wrapper-3">Noodle</div>
-                <div class="text-wrapper-4">Powered by</div>
+          <div class="source-noodle">
+            <div class="notes">
+              <div class="logo">
+                <div class="overlap-group">
+                  <img
+                    class="sk-telecom"
+                    src="img/login_screen/sk-telecom-t1-seeklogo-1.png"
+                  />
+                  <div class="text-wrapper-3">Noodle</div>
+                  <div class="text-wrapper-4">Powered by</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-<script>
-  const usernameField = document.getElementById('username');
-  const passwordField = document.getElementById('password');
-  function validateField(field) {
-    if (field.value === '') {
-      field.classList.add('error-highlight');
-      field.nextElementSibling.textContent = 'This field is required';
-    } else {
-      field.classList.remove('error-highlight');
-      field.nextElementSibling.textContent = '';
+  </body>
+  <script>
+    const usernameField = document.getElementById("username");
+    const passwordField = document.getElementById("password");
+    function validateField(field) {
+      if (field.value === "") {
+        field.classList.add("error-highlight");
+        field.nextElementSibling.textContent = "This field is required";
+      } else {
+        field.classList.remove("error-highlight");
+        field.nextElementSibling.textContent = "";
+      }
     }
-  }
-  usernameField.addEventListener('blur', () => {
-    validateField(usernameField);
-  });
+    usernameField.addEventListener("blur", () => {
+      validateField(usernameField);
+    });
 
-  passwordField.addEventListener('blur', () => {
-    validateField(passwordField);
-  });
+    passwordField.addEventListener("blur", () => {
+      validateField(passwordField);
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("form").on("submit", function (event) {
+        event.preventDefault();
+        console.log(2);
+        const username = $("#username").val();
+        const password = $("#password").val();
 
-</script>
-<script>
-  function getCookie(name) {
-    let value = "; " + document.cookie;
-    let parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
-  $(document).ready(function () {
-    let token = getCookie("auth-token");
-    if (token) {
-      window.location.href = "/home";
-    }
-    $("form").on("submit", function (event) {
-      event.preventDefault();
-
-      const username = $("#username").val();
-      const password = $("#password").val();
-
-      $.post(
-        "/api/auth/login",
-        { username: username, password: password }
-        ,
-        function (data, response) {
-          if (data === "fail") {
-            var elements = document.getElementById("password");
-            elements.classList.add('error-highlight');
-            elements.nextElementSibling.textContent = 'Incorrect username or password';
-          }
-          else
-            if (data.token) {
+        $.post(
+          "/api/auth/login",
+          { username: username, password: password },
+          function (data, response) {
+            if (data === "fail") {
+              var elements = document.getElementById("password");
+              elements.classList.add("error-highlight");
+              elements.nextElementSibling.textContent =
+                "Incorrect username or password";
+            } else if (data.token) {
               // Lưu token vào cookie
               document.cookie = "auth-token=" + data.token + ";path=/";
               window.location.href = "/home";
             }
-        }
-      );
+          }
+        );
+      });
     });
-  });
+  </script>
 
-</script>
-
-<script>
-  function togglePasswordVisibility() {
-    const newType =
-      $("#password").attr("type") === "password" ? "text" : "password";
-    $("#password").attr("type", newType);
-  }
-  function toggleCarbonView() {
-    const newIcon =
-      $("#password-view-icon").attr("src") ===
+  <script>
+    function togglePasswordVisibility() {
+      const newType =
+        $("#password").attr("type") === "password" ? "text" : "password";
+      $("#password").attr("type", newType);
+    }
+    function toggleCarbonView() {
+      const newIcon =
+        $("#password-view-icon").attr("src") ===
         "img/login_screen/carbon-view-off.svg"
-        ? "img/login_screen/carbon-view.svg"
-        : "img/login_screen/carbon-view-off.svg";
-    $("#password-view-icon").attr("src", newIcon);
-  }
-</script>
-
+          ? "img/login_screen/carbon-view.svg"
+          : "img/login_screen/carbon-view-off.svg";
+      $("#password-view-icon").attr("src", newIcon);
+    }
+  </script>
 </html>

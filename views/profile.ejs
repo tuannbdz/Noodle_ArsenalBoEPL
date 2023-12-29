@@ -1,0 +1,306 @@
+<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <title>Noodle</title>
+  </head>
+  <body>
+    <%-include('partials/navbar', { activePage: 'none' }) %>
+    <div class="mt-5"></div>
+    <div id="main" style="height: fit-content !important">
+      <div class="d-flex justify-content-center bot-line">
+        <span
+          id="account-trigger"
+          class="nav-acc <%= activeSection === 'account' ? 'active' : '' %>"
+          ><a class="btn fs-3" href="/profile">Account</a></span
+        >
+        <span
+          id="password-trigger"
+          class="nav-acc <%= activeSection === 'password' ? 'active' : '' %>"
+          ><a class="btn fs-3" href="/profile/password">Password</a></span
+        >
+      </div>
+      <div
+        id="account-area"
+        class="<%= activeSection === 'account' ? 'show' : '' %>"
+      >
+        <div class="text-center mt-3 fs-2 fw-bold">Account</div>
+        <img
+          aria-expanded="false"
+          class="avatar-icon rounded-circle mt-3 d-block mx-auto"
+          src="/img/navbar/21127689.png"
+          alt="student_picture"
+          style="cursor: pointer; height: 132px; width: 132px"
+        />
+        <div class="mt-5">
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col" style="height: 350px">
+              <div class="course-card h-100">
+                <div class="edit">Edit profile</div>
+                <div class="card-title">User details</div>
+                <div class="mt-5 fs-4 fw-bold">Emails</div>
+                <div class="fs-5">
+                  <span class="orange">ndtdat21@clc.fitus.edu.vn</span> (Visible
+                  to other course participants)
+                </div>
+                <div class="mt-4 fs-4 fw-bold">Place</div>
+                <div class="fs-5">Ho Chi Minh, Viet Nam</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="course-card h-100">
+                <div class="card-title">Login activity</div>
+                <div class="mt-5 fs-4 fw-bold">First access to site</div>
+                <div class="fs-5">
+                  Saturday, 2 October 2021, 10:42 AM (2 years 74 days)
+                </div>
+                <div class="mt-4 fs-4 fw-bold">Last access to site</div>
+                <div class="fs-5">Friday, 15 December 2023, 5:12 PM (now)</div>
+              </div>
+            </div>
+            <div class="col" style="height: 600px">
+              <div class="course-card h-100">
+                <div class="fs-4 btn btn-primary mid-bottom">View more</div>
+                <div class="card-title">Course details</div>
+                <div class="mt-5 mb-2 fs-4 fw-bold">Course profiles</div>
+                <div class="fs-5">
+                  <a class="orange" href="#"
+                    >Programing for Data Science - CSC17104 21KHDL01</a
+                  >
+                </div>
+                <div class="fs-5">
+                  <a class="orange" href="#"
+                    >Introduction to Data Science - CSC14119 21KHDL01</a
+                  >
+                </div>
+                <div class="fs-5">
+                  <a class="orange" href="#">General Law - BAA00004 21CLC02</a>
+                </div>
+                <div class="fs-5">
+                  <a class="orange" href="#"
+                    >Applied Math and Statistics for IT- MTH00057 21CLC03</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="course-card h-100">
+                <div class="fs-4 btn btn-primary mid-bottom">View more</div>
+                <div class="card-title">Upcoimg events</div>
+                <a
+                  href="#"
+                  class="btn d-flex flex-column align-items-start gap-3 py-2 bot-line"
+                >
+                  <div class="orange fs-4 one-row">
+                    <i class="fa-solid fa-link"></i> PA4 - Submission
+                  </div>
+                  <div class="fs-5">Sunday, 17 December, 22:00</div>
+                </a>
+                <a
+                  href="#"
+                  class="btn d-flex flex-column align-items-start gap-3 py-2 bot-line"
+                >
+                  <div class="orange fs-4 one-row">
+                    <i class="fa-solid fa-link"></i> PA4 - Submission
+                  </div>
+                  <div class="fs-5">Sunday, 17 December, 22:00</div> </a
+                ><a
+                  href="#"
+                  class="btn d-flex flex-column align-items-start gap-3 py-2 bot-line"
+                >
+                  <div class="orange fs-4 one-row">
+                    <i class="fa-solid fa-link"></i> PA4 - Submission
+                  </div>
+                  <div class="fs-5">Sunday, 17 December, 22:00</div> </a
+                ><a
+                  href="#"
+                  class="btn d-flex flex-column align-items-start gap-3 py-2 bot-line"
+                >
+                  <div class="orange fs-4 one-row">
+                    <i class="fa-solid fa-link"></i> PA4 - Submission
+                  </div>
+                  <div class="fs-5">Sunday, 17 December, 22:00</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="password-area"
+        style="padding: 0 200px"
+        class="<%= activeSection === 'password' ? 'show' : '' %>"
+      >
+        <form>
+          <div class="mt-5 mb-3">
+            <label for="current-password" class="form-label fs-4 fw-bold"
+              >Current password</label
+            >
+            <div class="input-group">
+              <input
+                type="password"
+                class="form-control rounded-4 fs-4"
+                id="current-password"
+              />
+            </div>
+            <div class="error"></div>
+          </div>
+          <div class="mb-3">
+            <label for="new-password" class="form-label fs-4 fw-bold"
+              >New password</label
+            >
+            <div class="input-group">
+              <input
+                type="password"
+                class="form-control rounded-4 fs-4"
+                id="new-password"
+              />
+            </div>
+            <div class="error"></div>
+          </div>
+          <div class="mb-3">
+            <label for="confirm-password" class="form-label fs-4 fw-bold"
+              >Confirm new password</label
+            >
+            <div class="input-group">
+              <input
+                type="password"
+                class="form-control rounded-4 fs-4"
+                id="confirm-password"
+              />
+            </div>
+            <div class="error"></div>
+          </div>
+
+          <button
+            type="submit"
+            id="update-button"
+            class="mt-5 btn btn-primary fs-5 mx-auto d-block"
+            style="background-color: #0098f9"
+          >
+            Update</button
+          ><!-- Button trigger modal -->
+        </form>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="popupModal"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div
+                class="modal-body d-flex flex-column gap-3 justify-content-center align-items-center"
+                style="height: 250px"
+              >
+                <i id="popup-sign" style="font-size: 150px"></i>
+                <div id="popup-message" class="fs-5 fw-bold text-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%-include('partials/footer') %>
+    <script>
+      function popUpMessage(status, message, time = 1000) {
+        // Show the modal on page load
+        const fail_sign = "fa-solid fa-triangle-exclamation text-danger";
+        const success_sign = "fa-solid fa-circle-check text-success";
+        if (status == "fail") {
+          $("#popupModal")
+            .find("#popup-sign")
+            .removeClass(success_sign)
+            .addClass(fail_sign);
+        } else {
+          $("#popupModal")
+            .find("#popup-sign")
+            .removeClass(fail_sign)
+            .addClass(success_sign);
+        }
+        $("#popupModal").find("#popup-message").text(message);
+        $("#popupModal").modal("show");
+
+        // // Set timeout to hide the modal after 1 second (1000 milliseconds)
+        // setTimeout(function () {
+        //   $("#popupModal").modal("hide");
+        // }, time);
+      }
+    </script>
+    <script>
+      var flag = 0;
+      const curPass = document.getElementById("current-password");
+      const newPass = document.getElementById("new-password");
+      const confirmPas = document.getElementById("confirm-password");
+      const updateButton = document.getElementById("update-button");
+      function validateField(field) {
+        if (field.value === "") {
+          field.classList.add("error-highlight");
+          field.parentNode.nextElementSibling.textContent =
+            "This field is required";
+          flag = 0;
+        } else {
+          field.classList.remove("error-highlight");
+          field.parentNode.nextElementSibling.textContent = "";
+          flag = 1;
+        }
+      }
+      function checkConfirm(newP, confirmP) {
+        if (
+          confirmP.value.length > newP.value.length ||
+          confirmP.value != newP.value.slice(0, confirmP.value.length)
+        ) {
+          confirmP.classList.add("error-highlight");
+          confirmP.parentNode.nextElementSibling.textContent =
+            "Confirm password is incorrect";
+          flag = 0;
+        } else {
+          confirmP.classList.remove("error-highlight");
+          confirmP.parentNode.nextElementSibling.textContent = "";
+          flag = 1;
+        }
+      }
+
+      curPass.addEventListener("blur", () => {
+        validateField(curPass);
+      });
+
+      newPass.addEventListener("blur", () => {
+        validateField(newPass);
+      });
+      confirmPas.addEventListener("blur", () => {
+        checkConfirm(newPass, confirmPas);
+        validateField(confirmPas);
+      });
+      confirmPas.addEventListener("input", () => {
+        checkConfirm(newPass, confirmPas);
+      });
+      $("form").on("submit", function (event) {
+        event.preventDefault();
+        console.log(flag);
+        if (!flag) return;
+        try {
+          $.post(
+            "/api/auth/updatePassword",
+            {
+              curPass: curPass.value,
+              newPass: newPass.value,
+            },
+            function (data, response) {
+              popUpMessage(data.status, data.message);
+            }
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>

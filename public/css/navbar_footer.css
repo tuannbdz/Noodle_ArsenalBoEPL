@@ -4,7 +4,7 @@
   top: 0;
   left: auto;
   right: auto;
-  z-index: 10000;
+  z-index: 100;
   display: flex;
   width: 1440px;
   height: 100px;
@@ -63,7 +63,8 @@
   line-height: normal;
 }
 .dropdown-item:active {
-  background: none !important;
+  color: black !important;
+  background: rgb(216, 216, 216) !important;
 }
 /* FOOTER */
 #footer {

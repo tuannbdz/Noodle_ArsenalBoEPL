@@ -3,7 +3,7 @@ const path = require("path");
 const router = express.Router();
 
 const controller = require(path.join(__dirname, "..", "controllers", "index"));
-
-router.route("/").get(controller.render);
+const Auth = require("./../middlewares/auth.js");
+router.route("/").get(Auth.isNotUser, controller.render);
 
 module.exports = router;

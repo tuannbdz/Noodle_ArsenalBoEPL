@@ -3,7 +3,7 @@ function render(req, res) {
 }
 
 function renderCourseId(req, res) {
-  res.render("home");
+  res.render("courseById");
 }
 exports.render = render;
 
