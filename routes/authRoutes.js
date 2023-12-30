@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const User = require("../models/userModel");
+const User = require(path.join(__dirname, "..", "models", "userModel"));
 const { registerValidator, passwordValidator } = require(path.join(
   __dirname,
   "..",

@@ -54,3 +54,48 @@
   width: 79px;
   height: 79px;
 }
+
+/* DETAIL */
+
+.box-1 {
+  position: relative;
+  border-radius: 34px;
+  border: 3px solid #e6e8ed;
+  /* backdrop-filter: blur(2px); */
+}
+
+.border-orange {
+  border: 3px solid #ffe9ca;
+  /* padding: 15px 55px !important; */
+}
+
+.toggle-materials {
+  position: absolute;
+  right: 60px;
+  top: 40px;
+  font-size: 30px;
+}
+
+.toggle-gear {
+  position: absolute;
+  right: 110px;
+  top: 36px;
+  font-size: 30px;
+}
+
+.gear-card {
+  position: absolute;
+  right: 80px;
+  top: 80px;
+  z-index: 1000 !important;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 3px solid #ffe9ca;
+  background: #fff;
+  backdrop-filter: blur(2px) !important;
+  transition: transform 0.5s ease !important;
+}

@@ -1,6 +1,6 @@
 .nav-acc {
   text-align: center;
-  width: 200px;
+  padding: 0 10px;
   cursor: pointer;
 }
 .nav-acc.active {
@@ -43,6 +43,10 @@
 
 .bot-line {
   border-bottom: 1px solid gray !important;
+}
+
+.top-line {
+  border-top: 1px solid gray !important;
 }
 
 .one-row {

@@ -6,6 +6,10 @@
   padding-top: 100px;
 }
 
+ul li {
+  margin-bottom: 10px;
+}
+
 .f-nunito {
   font-family: "Nunito", sans-serif;
 }
@@ -1474,7 +1478,7 @@
   width: 1408px;
   height: 1007px;
   border-radius: 34px;
-  border: 8px solid #FFE9CA;
+  border: 8px solid #ffe9ca;
   backdrop-filter: blur(2px);
   overflow: hidden;
   background-color: #fff;
@@ -1616,7 +1620,7 @@
   width: 1408px;
   height: 213px;
   border-radius: 34px;
-  border: 8px solid #FFE9CA;
+  border: 8px solid #ffe9ca;
   backdrop-filter: blur(2px);
   overflow: hidden;
   background-color: #fff;
@@ -1724,7 +1728,7 @@
   top: 1672px;
   left: 16px;
   border-radius: 34px;
-  border: 8px solid #FFE9CA;
+  border: 8px solid #ffe9ca;
   backdrop-filter: blur(2px);
   overflow: hidden;
   background-color: #fff;
@@ -1839,4 +1843,8 @@
   height: 65px;
   top: 75px;
   left: 1171px;
+}
+
+.rotate {
+  transition: transform 0.5s ease;
 }

@@ -14,11 +14,22 @@ const avatarHandle = require(path.join(
   "middlewares",
   "avatarHandle"
 ));
+const materialsHandle = require(path.join(
+  __dirname,
+  "..",
+  "middlewares",
+  "materialsHandle"
+));
 
 router.route("/").get(Auth.isUser, avatarHandle, controller.render);
 
 router
   .route("/:id")
-  .get(Auth.isUser, avatarHandle, controller.renderCourseDetail);
+  .get(
+    Auth.isUser,
+    materialsHandle,
+    avatarHandle,
+    controller.renderCourseDetail
+  );
 
 module.exports = router;
