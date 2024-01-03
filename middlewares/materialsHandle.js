@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
   req.course.materials = materials;
   const [classroom, id] = course_id.split("_");
   req.course.classroom = classroom;
-  req.course.id = id;
+  req.course.idClassroom = id;
   //   console.log(req.course);
   next();
 };

@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const path = require("path");
-const jwt = require("jsonwebtoken");
+
 const router = express.Router();
 const User = require(path.join(__dirname, "..", "models", "userModel"));
 const { registerValidator, passwordValidator } = require(path.join(
@@ -53,8 +53,6 @@ router.post("/register", authenticateForm, async (request, response) => {
 });
 
 router.post("/updatePassword", async function (req, res) {
-  // console.log(req.user);
-  // console.log(req.body);
   const { error } = passwordValidator({ password: req.body.newPass });
   if (error)
     return res.status(200).send({
@@ -78,31 +76,6 @@ router.post("/updatePassword", async function (req, res) {
     .status(200)
     .send({ status: "success", message: "change pass successfully!" });
 });
-
-// router.post("/login", async (request, response) => {
-//   const user = await User.findOne({ username: request.body.username });
-//   if (!user) return response.status(200).send("fail");
-
-//   const checkPassword = await bcrypt.compare(
-//     request.body.password,
-//     user.password
-//   );
-
-//   if (!checkPassword) return response.status(200).send("fail");
-//   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
-//     expiresIn: 60 * 60 * 24,
-//   });
-//   //   response.redirect("/home");
-//   return response.status(200).send({
-//     token,
-//     user: {
-//       _id: user._id,
-//       firstName: user.firstName,
-//       lastName: user.lastName,
-//     },
-//     message: "Login successfully",
-//   });
-// });
 
 router.post("/login", function (req, res, next) {
   passport.authenticate("local", function (err, user) {

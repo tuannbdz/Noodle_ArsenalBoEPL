@@ -1,6 +1,6 @@
 <%- include('partials/header') %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
       style="background-color: #e6e8ed; height: 240px; margin-top: 50px"
     >
       <div class="text-dark fs-2 fw-bold">
-        <%=course.name%> - <%=course.id%>
+        <%=course.name%> - <%=course.idClassroom%>
       </div>
       <div class="text-dark fs-5"><%=course.classroom%></div>
     </div>
@@ -42,7 +42,11 @@
       <!--  -->
       <% if (course.materials.hasOwnProperty(title)){%>
 
-      <div class="box-1 mt-5" style="padding: 20px 60px">
+      <div
+        class="box-1 mt-5"
+        data-collection="<%=title%>"
+        style="padding: 20px 60px"
+      >
         <button class="toggle-materials btn" type="button">
           <i class="rotate fas fa-angle-right dropdown"></i>
         </button>
@@ -55,34 +59,58 @@
             src="/img/detail_course_screen/gear.svg"
           />
         </button>
-        <div class="gear-card" style="display: none">
-          <div><i class="fa-solid fa-plus"></i> Add files</div>
-          <div><i class="fa-solid fa-plus"></i> Add links</div>
-          <div><i class="fa-solid fa-check"></i> Select</div>
-          <div><i class="fa-solid fa-check-double"></i> Select all</div>
+        <div class="gear-card" data-title="<%=title%>" style="display: none">
+          <div class="gear-btn" type="button">
+            <input
+              type="file"
+              name="file"
+              id="addFile-<%=title%>"
+              class="file addFile gear-input"
+            />
+            <label for="addFile-<%=title%>"
+              ><i class="fa-solid fa-plus"></i> Add files
+            </label>
+          </div>
+          <div class="gear-btn" type="button">
+            <i class="fa-solid fa-plus"></i> Add links
+          </div>
+          <div class="gear-btn" type="button">
+            <i class="fa-solid fa-check"></i> Select
+          </div>
+          <div class="gear-btn" type="button">
+            <i class="fa-solid fa-check-double"></i> Select all
+          </div>
         </div>
         <%}%>
-        <div class="px-4">
-          <div class="fs-2 fw-bold"><%=title%></div>
+        <div class="px-4 collection-header">
+          <div class="fs-2 fw-bold collection-title"><%=title%></div>
           <div class="fs-5">
             <img
               class="solar-book-outline"
               src="/img/detail_course_screen/solar_book-outline.svg"
             />
-            Lesson
+            <span>Lesson</span>
             <img class="vector" src="/img/detail_course_screen/Vector.svg" />
-            <%=course.materials[title].length%>
-            <%=course.materials[title].length > 1 ? "Sections" : "Section"%>
+
+            <span class="numSection">
+              <%=course.materials[title].length%>
+            </span>
+            <span>
+              <%=course.materials[title].length > 1 ? "Sections" : "Section"%>
+            </span>
           </div>
         </div>
         <!-- MATERIALS -->
         <div class="materials collapse">
-          <ul class="top-line px-4 mt-4" style="padding-top: 40px">
+          <ul
+            class="materials-list top-line px-4 mt-4"
+            style="padding-top: 40px"
+          >
             <%for (filename of course.materials[title]){%>
             <li class="item fs-3">
               <a
                 download
-                href="/materials/courses/<%=course.classroom%>_<%=course.id%>/<%=title%>/<%=filename%>"
+                href="/materials/courses/<%=course.classroom%>_<%=course.idClassroom%>/<%=title%>/<%=filename%>"
                 class="text-dark"
                 style="text-decoration: none"
               >
@@ -98,6 +126,7 @@
       <!--  -->
       <%}%>
     </div>
+    <div id="course_id" class="d-none"><%= course.id %></div>
     <%- include('partials/footer') %>
   </body>
   <script>
@@ -143,5 +172,68 @@
 
       $(this).parent().find(".gear-card").slideToggle("fast");
     });
+  </script>
+  <script>
+    $(".gear-card .gear-btn .addFile").on("change", function (event) {
+      event.preventDefault();
+      const file = this.files[0];
+      if (!(this.files && this.files.length > 0)) {
+        $(this).val("");
+        return;
+      }
+      $(this).val("");
+      var formData = new FormData();
+      formData.append("file", file);
+      const category = "courses";
+      const course_id = $("#course_id").text();
+      const collection = $(this).parent().parent().attr("data-title");
+
+      console.log(course_id, collection);
+      $.ajax({
+        url: `http://localhost:3000/api/upload/?category=${category}&course_id=${course_id}&collection=${collection}`, // URL mà bạn muốn gửi file đến
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log("File uploaded successfully");
+          console.log(response);
+          updateCollection(course_id, collection, response.filename);
+        },
+        error: function (response) {
+          console.error("Error occurred during file upload");
+        },
+      });
+    });
+    function updateCollection(course_id, collection, filename) {
+      // update numSection
+      const numSection = $(`[data-collection="${collection}"]`).find(
+        ".numSection"
+      );
+      var updateVal = Number(numSection.text()) + 1;
+      numSection.text(updateVal);
+      if (updateVal > 1) {
+        numSection.next().text("Sections");
+      } else {
+        numSection.next().text("Section");
+      }
+      // update materials list
+      const materials_list = $(`[data-collection="${collection}"]`).find(
+        ".materials .materials-list"
+      );
+      materials_list.append(`
+      <li class="item fs-3">
+        <a
+          download
+          href="/materials/courses/${course_id}/${collection}/${filename}"
+          class="text-dark"
+          style="text-decoration: none"
+        >
+          <i class="fa-regular fa-file"></i>
+          <span class="name">${filename}</span>
+        </a>
+      </li>
+      `);
+    }
   </script>
 </html>

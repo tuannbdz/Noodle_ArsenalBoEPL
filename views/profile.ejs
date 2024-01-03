@@ -356,7 +356,7 @@
         var formData = new FormData($(this)[0]);
         const category = "avatar";
         const username = $("#user-username").text();
-
+        console.log(formData);
         $.ajax({
           url: `http://localhost:3000/api/upload/?category=${category}&username=${username}`, // URL mà bạn muốn gửi file đến
           type: "POST",
