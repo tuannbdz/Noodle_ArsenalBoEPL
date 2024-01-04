@@ -19,7 +19,9 @@ const storage = multer.diskStorage({
     if (!req.name) {
       req.name = file.originalname;
     }
-    req.name = getFileName(req.dir, req.name);
+    if (req.dir != "avatar") {
+      req.name = getFileName(req.dir, req.name);
+    }
     cb(null, req.name); // Rename the file
   },
 });
