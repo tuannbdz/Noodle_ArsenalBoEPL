@@ -1,6 +1,5 @@
 module.exports = {
   setDirUpload: function (req, res, next) {
-    console.log(req.query);
     if (!req.query.category) {
       req.query.category = "others";
     }

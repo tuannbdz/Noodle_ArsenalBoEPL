@@ -6,6 +6,6 @@ const uploadRouter = require(path.join(__dirname, ".", "uploadRoutes"));
 const auth = require(path.join(__dirname, "..", "middlewares", "auth"));
 
 router.use("/auth", authRouter);
-router.use("/upload", auth.isUser, uploadRouter);
+router.use("/upload", uploadRouter);
 
 module.exports = router;
