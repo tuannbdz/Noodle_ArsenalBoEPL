@@ -1,12 +1,7 @@
 const path = require("path");
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
-const multer = require("multer");
 
-// const Student = require("./models/studentModel");
-// const Admin = require("./models/adminModel");
-// const Lecturer = require("./models/lecturerModel");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
@@ -20,12 +15,10 @@ const globalErrorHandler = require(path.join(
   "error"
 ));
 
-const indexRouter = require(path.join(__dirname, "routes", "index"));
+const indexRouter = require(path.join(__dirname, "routes", "indexRoutes"));
 const homeRouter = require(path.join(__dirname, "routes", "homeRoutes"));
-const authRouter = require(path.join(__dirname, "routes", "authRoutes"));
-const usersRouter = require(path.join(__dirname, "routes", "usersRoutes"));
+const apiRouter = require(path.join(__dirname, "routes", "apiRoutes"));
 const courseRouter = require(path.join(__dirname, "routes", "courseRoutes"));
-const uploadRouter = require(path.join(__dirname, "routes", "uploadRoutes"));
 const profileRouter = require(path.join(__dirname, "routes", "profileRoutes"));
 const app = express();
 
@@ -73,10 +66,8 @@ app.use("/", indexRouter);
 app.use("/home", homeRouter);
 app.use("/course", courseRouter);
 app.use("/profile", profileRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/users", usersRouter);
-app.use("/api/upload", uploadRouter);
-app.route("/test").get(require("./controllers/uploadController").render);
+app.use("/api", apiRouter);
+
 app.all("*", function (req, res, next) {
   next(new AppError(`Cannot find ${req.originalUrl} on this server!`, 404));
 });

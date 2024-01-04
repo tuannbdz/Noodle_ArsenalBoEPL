@@ -25,13 +25,18 @@ module.exports = {
         });
       }
     });
-
     return results;
   },
+  getFileName: function (folder, originalName) {
+    var filename = originalName;
+    var counter = 1;
+    var fileExt = path.extname(originalName);
+    var basename = path.basename(originalName, fileExt);
+
+    while (checkFileExists(folder, filename)) {
+      filename = basename + `(${counter})` + fileExt;
+      counter++;
+    }
+    return filename;
+  },
 };
-
-// const directoryPath =
-// "C:/Users/Thaiss/Documents/Desktop/code/SE/Noodle_ArsenalBoEPL/materials"; // Thay thế với đường dẫn thực tế của bạn
-// const directoryFiles = getDirectoryFiles(directoryPath);
-
-// console.log(JSON.stringify(directoryFiles, null, 2));

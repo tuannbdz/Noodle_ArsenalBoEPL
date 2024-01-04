@@ -12,6 +12,5 @@ module.exports = (req, res, next) => {
     ? username + "-avatar.png"
     : "default.svg";
   req.user.avatar = avatar_name;
-  //   console.log(avatar_name);
   next();
 };
