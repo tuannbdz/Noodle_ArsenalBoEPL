@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const cookieParser = require("cookie-parser");
+const { preferences } = require("joi");
 require("dotenv").config();
 
 const JWTAction = require(path.join(__dirname, "utilities", "JWTAction"));
@@ -20,6 +21,12 @@ const homeRouter = require(path.join(__dirname, "routes", "homeRoutes"));
 const apiRouter = require(path.join(__dirname, "routes", "apiRoutes"));
 const courseRouter = require(path.join(__dirname, "routes", "courseRoutes"));
 const profileRouter = require(path.join(__dirname, "routes", "profileRoutes"));
+const preferenceRouter = require(path.join(
+  __dirname,
+  "routes",
+  "preferenceRoutes"
+));
+
 const app = express();
 
 app.use(
@@ -66,6 +73,7 @@ app.use("/", indexRouter);
 app.use("/home", homeRouter);
 app.use("/course", courseRouter);
 app.use("/profile", profileRouter);
+app.use("/preference", preferenceRouter);
 app.use("/api", apiRouter);
 
 app.all("*", function (req, res, next) {

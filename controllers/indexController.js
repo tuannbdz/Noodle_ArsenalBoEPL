@@ -1,4 +1,4 @@
-function render(req, res, error) {
+function render(req, res, next) {
   try {
     res.render("index");
   } catch (error) {

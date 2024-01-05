@@ -3,8 +3,7 @@ function render(req, res, next) {
     const username = req.user.username;
     const avatar_name = req.user.avatar;
     const fullName = req.user.fullName || req.user.role;
-    res.render("profile", {
-      user: req.user,
+    res.render("preference", {
       fullName: fullName,
       username: username,
       avatar: avatar_name,

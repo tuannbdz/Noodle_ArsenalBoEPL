@@ -63,9 +63,10 @@
           <div class="gear-btn" type="button">
             <input
               type="file"
-              name="file"
+              name="files[]"
               id="addFile-<%=title%>"
               class="file addFile gear-input"
+              multiple
             />
             <label for="addFile-<%=title%>"
               ><i class="fa-solid fa-plus"></i> Add files
@@ -176,19 +177,23 @@
   <script>
     $(".gear-card .gear-btn .addFile").on("change", function (event) {
       event.preventDefault();
-      const file = this.files[0];
+      const files = this.files;
       if (!(this.files && this.files.length > 0)) {
         $(this).val("");
         return;
       }
-      $(this).val("");
+
       var formData = new FormData();
-      formData.append("file", file);
+
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        formData.append("files[]", file);
+      }
       const category = "courses";
       const course_id = $("#course_id").text();
       const collection = $(this).parent().parent().attr("data-title");
 
-      console.log(course_id, collection);
+      $(this).val("");
       $.ajax({
         url: `http://localhost:3000/api/upload/?category=${category}&course_id=${course_id}&collection=${collection}`, // URL mà bạn muốn gửi file đến
         type: "POST",
@@ -197,20 +202,20 @@
         processData: false,
         success: function (response) {
           console.log("File uploaded successfully");
-          console.log(response);
-          updateCollection(course_id, collection, response.filename);
+          console.log(response.files);
+          updateCollection(course_id, collection, response.files);
         },
         error: function (response) {
           console.error("Error occurred during file upload");
         },
       });
     });
-    function updateCollection(course_id, collection, filename) {
+    function updateCollection(course_id, collection, files) {
       // update numSection
       const numSection = $(`[data-collection="${collection}"]`).find(
         ".numSection"
       );
-      var updateVal = Number(numSection.text()) + 1;
+      var updateVal = Number(numSection.text()) + files.length;
       numSection.text(updateVal);
       if (updateVal > 1) {
         numSection.next().text("Sections");
@@ -221,19 +226,21 @@
       const materials_list = $(`[data-collection="${collection}"]`).find(
         ".materials .materials-list"
       );
-      materials_list.append(`
-      <li class="item fs-3">
-        <a
-          download
-          href="/materials/courses/${course_id}/${collection}/${filename}"
-          class="text-dark"
-          style="text-decoration: none"
-        >
-          <i class="fa-regular fa-file"></i>
-          <span class="name">${filename}</span>
-        </a>
-      </li>
-      `);
+      for (const filename of files) {
+        materials_list.append(`
+        <li class="item fs-3">
+          <a
+            download
+            href="/materials/courses/${course_id}/${collection}/${filename}"
+            class="text-dark"
+            style="text-decoration: none"
+          >
+            <i class="fa-regular fa-file"></i>
+            <span class="name">${filename}</span>
+          </a>
+        </li>
+        `);
+      }
     }
   </script>
 </html>

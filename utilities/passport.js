@@ -15,7 +15,11 @@ passport.use(
       if (!match) {
         return done(null, false);
       }
-      done(null, { username: user.username, role: user.role });
+      done(null, {
+        username: user.username,
+        role: user.role,
+        fullName: user.fullName,
+      });
     } catch (error) {
       return done(error);
     }
@@ -23,11 +27,19 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, { username: user.username, role: user.role });
+  done(null, {
+    username: user.username,
+    role: user.role,
+    fullName: user.fullName,
+  });
 });
 
 passport.deserializeUser(function (user, done) {
-  done(null, { username: user.username, role: user.role });
+  done(null, {
+    username: user.username,
+    role: user.role,
+    fullName: user.fullName,
+  });
 });
 
 module.exports = passport;

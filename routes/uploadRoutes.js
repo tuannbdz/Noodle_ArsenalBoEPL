@@ -1,24 +1,38 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-const { setDirUpload } = require(path.join(
-  __dirname,
-  "..",
-  "middlewares",
-  "dirUploadHandle"
-));
-const upload = require(path.join(__dirname, "..", "utilities", "multerHandle"));
 const controller = require(path.join(
   __dirname,
   "..",
   "controllers",
   "API_uploadController"
 ));
+
+const { setDirUpload } = require(path.join(
+  __dirname,
+  "..",
+  "middlewares",
+  "dirUploadHandle"
+));
+const { upload_avatar, upload_materials } = require(path.join(
+  __dirname,
+  "..",
+  "utilities",
+  "multerHandle"
+));
+
+router.post(
+  "/avatar",
+  setDirUpload,
+  upload_avatar.single("file"),
+  controller.uploadAvatarResponse
+);
+
 router.post(
   "/",
   setDirUpload,
-  upload.single("file"),
-  controller.uploadResponse
+  upload_materials.array("files[]"),
+  controller.uploadMaterialsResponse
 );
 
 module.exports = router;

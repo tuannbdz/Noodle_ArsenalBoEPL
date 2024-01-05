@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
-// const verifyToken = require("./../middlewares/verifyToken");
 const Auth = require(path.join(__dirname, "..", "middlewares", "auth"));
 
 const controller = require(path.join(

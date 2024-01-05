@@ -7,7 +7,7 @@ const { getFileName } = require(path.join(
   "utilities",
   "fileCheck"
 ));
-const storage = multer.diskStorage({
+const storage_avatar = multer.diskStorage({
   destination: function (req, file, cb) {
     const uploadPath = `materials/${req.dir}`;
     if (!fs.existsSync(uploadPath)) {
@@ -19,11 +19,24 @@ const storage = multer.diskStorage({
     if (!req.name) {
       req.name = file.originalname;
     }
-    if (req.dir != "avatar") {
-      req.name = getFileName(req.dir, req.name);
-    }
     cb(null, req.name); // Rename the file
   },
 });
-const upload = multer({ storage: storage });
-module.exports = upload;
+const storage_materials = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadPath = `materials/${req.dir}`;
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+    }
+    cb(null, uploadPath); // Set the destination folder for uploaded files
+  },
+  filename: function (req, file, cb) {
+    let filename = getFileName(req.dir, file.originalname);
+    cb(null, filename); // Rename the file
+  },
+});
+const upload_avatar = multer({ storage: storage_avatar });
+const upload_materials = multer({ storage: storage_materials });
+
+exports.upload_avatar = upload_avatar;
+exports.upload_materials = upload_materials;

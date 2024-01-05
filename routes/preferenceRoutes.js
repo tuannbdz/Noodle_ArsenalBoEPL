@@ -13,7 +13,7 @@ const controller = require(path.join(
   __dirname,
   "..",
   "controllers",
-  "profileController"
+  "preferenceController"
 ));
 
 router.route("/").get(Auth.isUser, avatarHandle, controller.render);

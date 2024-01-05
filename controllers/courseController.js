@@ -1,6 +1,13 @@
 function render(req, res, next) {
   try {
-    res.render("courses", { avatar: req.user.avatar });
+    const username = req.user.username;
+    const avatar_name = req.user.avatar;
+    const fullName = req.user.fullName || req.user.role;
+    res.render("courses", {
+      fullName: fullName,
+      username: username,
+      avatar: avatar_name,
+    });
   } catch (error) {
     next(error);
   }
@@ -8,6 +15,9 @@ function render(req, res, next) {
 
 function renderCourseDetail(req, res, next) {
   try {
+    const username = req.user.username;
+    const avatar_name = req.user.avatar;
+    const fullName = req.user.fullName || req.user.role;
     if (req.user.role === "lecturer") {
       if (
         req.course.lecturers.length >= 1 &&
@@ -15,14 +25,18 @@ function renderCourseDetail(req, res, next) {
       ) {
         return res.render("course_detail", {
           isLecturer: true,
-          avatar: req.user.avatar,
+          fullName: fullName,
+          username: username,
+          avatar: avatar_name,
           course: req.course,
         });
       }
     }
     return res.render("course_detail", {
       isLecturer: false,
-      avatar: req.user.avatar,
+      fullName: fullName,
+      username: username,
+      avatar: avatar_name,
       course: req.course,
     });
   } catch (error) {

@@ -15,7 +15,6 @@ const { authenticateForm } = require(path.join(
   "middlewares",
   "registerHandle"
 ));
-
 router.post("/register", authenticateForm, controller.registerAccount);
 
 router.post("/updatePassword", controller.updatePassword);
