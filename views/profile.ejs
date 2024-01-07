@@ -202,7 +202,7 @@
         const username = $("#user-username").text();
         console.log(formData);
         $.ajax({
-          url: `http://localhost:3000/api/upload/avatar/?category=${category}&username=${username}`, // URL mà bạn muốn gửi file đến
+          url: `/api/upload/avatar/?category=${category}&username=${username}`, // URL mà bạn muốn gửi file đến
           type: "POST",
           data: formData,
           contentType: false,

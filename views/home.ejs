@@ -69,10 +69,7 @@
     </div>
     <!-- LATEST DEADLINE -->
     <div class="deadline">
-      <div
-        class="course-card"
-        onclick="window.location.href='http:\/\/localhost:3000';"
-      >
+      <div class="course-card">
         <!-- title -->
         <div class="title text-wrapper-12">Introduction to Programming</div>
         <div class="d-flex justify-content-between align-items-center w-100">
@@ -81,10 +78,7 @@
         </div>
         <div class="text-wrapper-15">3 days 23 hours</div>
       </div>
-      <div
-        class="course-card"
-        onclick="window.location.href='http:\/\/localhost:3000';"
-      >
+      <div class="course-card">
         <!-- title -->
         <div class="title text-wrapper-12 w-100">
           Introduction to Software Engineering
@@ -95,10 +89,7 @@
         </div>
         <div class="text-wrapper-15">3 days 23 hours</div>
       </div>
-      <div
-        class="course-card"
-        onclick="window.location.href='http:\/\/localhost:3000';"
-      >
+      <div class="course-card">
         <!-- title -->
         <div class="title text-wrapper-12">Introduction to Data Science</div>
         <div class="d-flex justify-content-between align-items-center w-100">
@@ -115,73 +106,43 @@
       <div class="text-wrapper-7 mb-5">Semester 1 - Junior</div>
 
       <!-- COURSES -->
-      <div class="course-card mx-auto mb-5" style="width: 90%">
-        <!-- KEY-ICON -->
-        <img
-          src="/img/home_screen/solar-key-linear.svg"
-          alt="key-icon"
-          style="
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 57px;
-            margin: auto;
-          "
-        />
-        <!-- COURSE TITLE -->
-        <div class="title text-wrapper-8">
-          Introduction to Machine Learning - CSC14005
+      <% for (const course of courses) {%>
+      <a href="/course/<%=course.id%>" style="text-decoration: none">
+        <div class="course-card mx-auto mb-5" style="width: 90%">
+          <!-- KEY-ICON -->
+          <img
+            src="/img/home_screen/solar-key-linear.svg"
+            alt="key-icon"
+            style="
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 57px;
+              margin: auto;
+            "
+          />
+          <!-- COURSE TITLE -->
+          <div class="title text-wrapper-8">
+            <%=course.name%> - <%=course.idClassroom%>
+          </div>
+          <!-- COURSE CLASS -->
+          <div class="text-wrapper-9 mb-3"><%=course.classroom%></div>
+          <!-- COURSE TEACHERS -->
+          <div class="text-wrapper-9">
+            <span>Teacher: </span>
+            <span style="color: #ff7c00">Bui Tien Len</span>
+          </div>
+          <div class="text-wrapper-9">
+            <span>Teacher: </span>
+            <span style="color: #ff7c00">Le Nhut Nam</span>
+          </div>
+          <div class="text-wrapper-9">
+            <span>Teacher: </span>
+            <span style="color: #ff7c00">Nguyen Ngoc Duc</span>
+          </div>
         </div>
-        <!-- COURSE CLASS -->
-        <div class="text-wrapper-9 mb-3">21KHMT01</div>
-        <!-- COURSE TEACHERS -->
-        <div class="text-wrapper-9">
-          <span>Teacher: </span>
-          <span style="color: #ff7c00">Bui Tien Len</span>
-        </div>
-        <div class="text-wrapper-9">
-          <span>Teacher: </span>
-          <span style="color: #ff7c00">Le Nhut Nam</span>
-        </div>
-        <div class="text-wrapper-9">
-          <span>Teacher: </span>
-          <span style="color: #ff7c00">Nguyen Ngoc Duc</span>
-        </div>
-      </div>
-
-      <div class="course-card mx-auto mb-5" style="width: 90%">
-        <!-- KEY-ICON -->
-        <img
-          src="/img/home_screen/solar-key-linear.svg"
-          alt="key-icon"
-          style="
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 57px;
-            margin: auto;
-          "
-        />
-        <!-- COURSE TITLE -->
-        <div class="title text-wrapper-8">
-          Introduction to Machine Learning - CSC14005
-        </div>
-        <!-- COURSE CLASS -->
-        <div class="text-wrapper-9 mb-3">21KHMT01</div>
-        <!-- COURSE TEACHERS -->
-        <div class="text-wrapper-9">
-          <span>Teacher: </span>
-          <span style="color: #ff7c00">Bui Tien Len</span>
-        </div>
-        <div class="text-wrapper-9">
-          <span>Teacher: </span>
-          <span style="color: #ff7c00">Le Nhut Nam</span>
-        </div>
-        <div class="text-wrapper-9">
-          <span>Teacher: </span>
-          <span style="color: #ff7c00">Nguyen Ngoc Duc</span>
-        </div>
-      </div>
+      </a>
+      <%}%>
     </div>
 
     <!-- FOOTER -->

@@ -41,6 +41,40 @@
       /></a>
       <!-- NAVBAR MENU -->
       <div class="navbar-nav">
+        <%if (role === "admin"){%>
+        <a
+          class="nav-link <%= activePage === 'home' ? 'active' : '' %>"
+          href="/home"
+          >Home</a
+        >
+        <a
+          class="nav-link <%= activePage === 'calendar' ? 'active' : '' %>"
+          href="#"
+          >Calendar</a
+        >
+        <a
+          class="nav-link <%= activePage === 'support' ? 'active' : '' %>"
+          href="#"
+          >Support</a
+        >
+        <!--  -->
+        <%}else if(role === "lecturer"){%>
+        <a
+          class="nav-link <%= activePage === 'home' ? 'active' : '' %>"
+          href="/home"
+          >Home</a
+        >
+        <a
+          class="nav-link <%= activePage === 'calendar' ? 'active' : '' %>"
+          href="#"
+          >Calendar</a
+        >
+        <a
+          class="nav-link <%= activePage === 'support' ? 'active' : '' %>"
+          href="#"
+          >Support</a
+        >
+        <%}else {%>
         <a
           class="nav-link <%= activePage === 'home' ? 'active' : '' %>"
           href="/home"
@@ -61,6 +95,7 @@
           href="#"
           >Support</a
         >
+        <%}%>
       </div>
       <div
         class="d-flex align-items-center justify-content-between"

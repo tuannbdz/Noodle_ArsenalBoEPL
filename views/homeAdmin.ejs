@@ -23,10 +23,8 @@
           class="nav-acc <%= activeSection === 'automation' ? 'active' : '' %>"
           ><a class="btn fs-3" href="/home/?activeSection=automation"
             >Automation</a
-          ></span
-        >
-        </span
-        >
+          >
+        </span>
       </div>
       <div
         id="manually-area"
@@ -217,10 +215,109 @@
       <!-- AUTOMATION AREA -->
       <div
         id="automation-area"
-        style="padding: 0 200px"
+        style="padding: 0 100px"
         class="section <%= activeSection === 'automation' ? 'show' : 'd-none' %>"
-      ></div>
-      
+      >
+        <div
+          class="drag_and_drop_box"
+          style="
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+          "
+        >
+          <div
+            class="folder_and_file"
+            style="
+              width: 100%;
+              display: inline-flex;
+              justify-content: space-between;
+              background: #fff;
+            "
+          >
+            <div
+              style="
+                display: inline-flex;
+                transform: scale(0.6);
+                background: #fff;
+              "
+            >
+              <img
+                src="/img/homeAdmin_screen/bi_folder.png"
+                alt="Folder"
+                style="
+                  max-width: 100%;
+                  height: auto;
+                  margin-right: 5%;
+                  background: #fff;
+                "
+              />
+              <img
+                src="/img/homeAdmin_screen/lucide_file.png"
+                alt="File"
+                style="max-width: 100%; height: auto; background: #fff"
+              />
+            </div>
+
+            <div
+              style="
+                display: inline-flex;
+                transform: scale(0.6);
+                background: #fff;
+              "
+            >
+              <img
+                src="/img/homeAdmin_screen/fe_app-menu.png"
+                alt="App Menu"
+                style="max-width: 100%; height: auto; background: #fff"
+              />
+              <img
+                src="/img/homeAdmin_screen/charm_menu-hamburger.png"
+                alt="Hamburger Menu"
+                style="
+                  max-width: 100%;
+                  height: auto;
+                  margin-left: 5%;
+                  background: #fff;
+                "
+              />
+            </div>
+          </div>
+          <hr style="width: 100%; border: 1px solid #000; margin: 10px 0" />
+          <label for="input-file" id="drop-area">
+            <input type="file" accept=".xlsx, .xls" id="input-file" hidden />
+            <div id="img-view">
+              <img
+                src="/img/homeAdmin_screen/icon-park-solid_down-two.png"
+                alt="Download Arrow"
+              />
+              <p>You can drag and drop only 1 file here to add them.</p>
+            </div>
+          </label>
+          <table id="file-details" class="hidden">
+            <tr>
+              <th>Name</th>
+              <th>Last Modified</th>
+              <th>Size</th>
+              <th>Type (required)</th>
+            </tr>
+          </table>
+        </div>
+        <div
+          class="button_update_canceel"
+          style="display: flex; justify-content: center; width: 100%"
+        >
+          <button
+            class="button button-update hidden"
+            style="margin-right: 40px"
+          >
+            Update
+          </button>
+          <button class="button button-cancel hidden">Cancel</button>
+        </div>
+      </div>
     </div>
 
     <!-- Modal -->
@@ -343,18 +440,74 @@
         if (!checkFullFieldInput()) {
           return popUpMessage("fail", "Please fill in all the fields.");
         }
-          $.post("/api/auth/register", formData)
-            .done(function (data) {
-              // Handle success
-              popUpMessage(data.status, data.message);
-            })
-            .fail(function (xhr, textStatus, errorThrown) {
-              popUpMessage("fail", xhr.responseText);
-              console.log(
-                "Error: " + xhr.status + " " + textStatus + " " + errorThrown
-              );
-            });
+        $.post("/api/auth/register", formData)
+          .done(function (data) {
+            // Handle success
+            popUpMessage(data.status, data.message);
+          })
+          .fail(function (xhr, textStatus, errorThrown) {
+            popUpMessage("fail", xhr.responseText);
+            console.log(
+              "Error: " + xhr.status + " " + textStatus + " " + errorThrown
+            );
+          });
       });
+    </script>
+    <script>
+      document
+        .getElementById("drop-area")
+        .addEventListener("click", function () {
+          document.getElementById("input-file").click();
+        });
+
+      document
+        .getElementById("input-file")
+        .addEventListener("change", function (event) {
+          var file = event.target.files[0];
+          if (
+            file.type ===
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+            file.type === "application/vnd.ms-excel"
+          ) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              document.getElementById("drop-area").style.display = "none"; // Hide the drop area
+              var details = document.getElementById("file-details");
+              details.classList.remove("hidden"); // Show the file details
+              details.innerHTML += `
+            <tr>
+              <td>${file.name}</td>
+              <td>${new Date(
+                file.lastModified
+              ).toLocaleDateString()} ${new Date(
+                file.lastModified
+              ).toLocaleTimeString()}</td>
+              <td>${(file.size / 1024 / 1024).toFixed(2)} MB</td>
+              <td>${file.type}</td>
+            </tr>
+          `;
+              document
+                .querySelector(".button-update")
+                .classList.remove("hidden");
+              document
+                .querySelector(".button-cancel")
+                .classList.remove("hidden");
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert("Please upload only Excel files.");
+          }
+        });
+
+      document
+        .querySelector(".button-cancel")
+        .addEventListener("click", function () {
+          document.getElementById("drop-area").style.display = "flex"; // Show the drop area
+          document.getElementById("file-details").classList.add("hidden"); // Hide the file details
+          document.querySelector(".button-update").classList.add("hidden");
+          document.querySelector(".button-cancel").classList.add("hidden");
+          document.getElementById("input-file").value = ""; // Reset the file input
+        });
     </script>
   </body>
 </html>

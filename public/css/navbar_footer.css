@@ -10,6 +10,7 @@
   height: 100px;
   padding: 31px 32px;
   align-items: center;
+  justify-content: space-between;
   gap: 202px;
   border-radius: 0px 0px 23px 23px;
   background: white;

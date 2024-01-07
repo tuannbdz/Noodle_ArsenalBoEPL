@@ -1,7 +1,7 @@
 /* HOME SCREEN */
 .deadline {
   position: absolute;
-  z-index: 900;
+  z-index: 5;
   top: 620px;
   left: 0;
   right: 0;

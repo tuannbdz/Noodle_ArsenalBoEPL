@@ -195,7 +195,7 @@
 
       $(this).val("");
       $.ajax({
-        url: `http://localhost:3000/api/upload/?category=${category}&course_id=${course_id}&collection=${collection}`, // URL mà bạn muốn gửi file đến
+        url: `/api/upload/?category=${category}&course_id=${course_id}&collection=${collection}`, // URL mà bạn muốn gửi file đến
         type: "POST",
         data: formData,
         contentType: false,

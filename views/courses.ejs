@@ -78,39 +78,40 @@
         </button>
 
         <ul class="dropdown-menu dropdown-menu-start">
-          <li
-            class="dropdown-item"
-            style="color: #0c0928 !important; cursor: pointer"
-          >
-            1
-          </li>
-          <li
-            class="dropdown-item"
-            style="color: #0c0928 !important; cursor: pointer"
-          >
-            2
-          </li>
-          <li
-            class="dropdown-item selected"
-            style="color: #0c0928 !important; cursor: pointer"
-          >
-            3
-          </li>
-          <li
-            class="dropdown-item"
-            style="color: #0c0928 !important; cursor: pointer"
-          >
-            4
-          </li>
+          <a href="/course/?semester=1" style="text-decoration: none">
+            <li
+              class="dropdown-item <%=semester == 1 ? 'selected' : '' %>"
+              style="color: #0c0928 !important; cursor: pointer"
+            >
+              1
+            </li>
+          </a>
+          <a href="/course/?semester=2" style="text-decoration: none">
+            <li
+              class="dropdown-item <%=semester == 2 ? 'selected' : '' %>"
+              style="color: #0c0928 !important; cursor: pointer"
+            >
+              2
+            </li>
+          </a>
+          <a href="/course/?semester=3" style="text-decoration: none">
+            <li
+              class="dropdown-item <%=semester == 3 ? 'selected' : '' %>"
+              style="color: #0c0928 !important; cursor: pointer"
+            >
+              3
+            </li>
+          </a>
         </ul>
       </div>
       <!-- COURSES -->
       <div class="row row-cols-1 row-cols-md-3 g-4">
+        <%for (const course of semester_courses){%>
         <!-- COURSE -->
         <div class="col">
           <div class="course-card card" style="background-color: #ffe7ee">
             <!-- title -->
-            <div class="text-wrapper-8">Introduction to Machine Learning</div>
+            <div class="text-wrapper-8"><%=course.name%></div>
             <!--process status -->
             <div class="process-status">In process</div>
             <!-- process week -->
@@ -118,74 +119,11 @@
               <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
             </div>
             <!-- play button -->
-            <a
-              class="play-button"
-              href="/course/21CLC03_CSC13002"
-              role="button"
-            >
+            <a class="play-button" href="/course/<%=course.id%>" role="button">
             </a>
           </div>
         </div>
-        <!-- COURSE -->
-        <div class="col">
-          <div class="course-card card" style="background-color: #ffe7ee">
-            <!-- title -->
-            <div class="text-wrapper-8">Introduction to Machine Learning</div>
-            <!--process status -->
-            <div class="process-status">In process</div>
-            <!-- process week -->
-            <div class="process-week">
-              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
-            </div>
-            <!-- play button -->
-            <a
-              class="play-button"
-              href="/course/21CLC03_CSC13002"
-              role="button"
-            >
-            </a>
-          </div>
-        </div>
-        <!-- COURSE -->
-        <div class="col">
-          <div class="course-card card" style="background-color: #ffe7ee">
-            <!-- title -->
-            <div class="text-wrapper-8">Introduction to Machine Learning</div>
-            <!--process status -->
-            <div class="process-status">In process</div>
-            <!-- process week -->
-            <div class="process-week">
-              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
-            </div>
-            <!-- play button -->
-            <a
-              class="play-button"
-              href="/course/21CLC03_CSC13002"
-              role="button"
-            >
-            </a>
-          </div>
-        </div>
-        <!-- COURSE -->
-        <div class="col">
-          <div class="course-card card" style="background-color: #ffe7ee">
-            <!-- title -->
-            <div class="text-wrapper-8">Introduction to Machine Learning</div>
-            <!--process status -->
-            <div class="process-status">In process</div>
-            <!-- process week -->
-            <div class="process-week">
-              <span style="font-size: 24px; font-weight: 700">11</span>/12 weeks
-            </div>
-            <!-- play button -->
-            <a
-              class="play-button"
-              href="/course/21CLC03_CSC13002"
-              role="button"
-            >
-            </a>
-          </div>
-        </div>
+        <%}%>
       </div>
     </div>
     <!-- FOOETER -->

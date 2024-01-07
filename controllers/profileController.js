@@ -4,7 +4,7 @@ function render(req, res, next) {
     const avatar_name = req.user.avatar;
     const fullName = req.user.fullName || req.user.role;
     res.render("profile", {
-      user: req.user,
+      role: req.user.role,
       fullName: fullName,
       username: username,
       avatar: avatar_name,
